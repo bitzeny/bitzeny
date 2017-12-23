@@ -14,7 +14,7 @@ License
 BitZeny Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
 information or see http://opensource.org/licenses/MIT.
 
-Build bitzenyd on Ubuntu 14.04
+Build bitzeny on Ubuntu 14.04
 -------------------
 
     sudo apt-get install build-essential
