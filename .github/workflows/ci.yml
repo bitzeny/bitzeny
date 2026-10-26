@@ -15,7 +15,7 @@ on:
 
 concurrency:
   group: ${{ github.event_name != 'pull_request' && github.run_id || github.ref }}
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 env:
   CI_FAILFAST_TEST_LEAVE_DANGLING: 1  # GHA does not care about dangling processes and setting this variable avoids killing the CI script itself on error
@@ -25,7 +25,7 @@ env:
 jobs:
   runners:
     name: 'determine runners'
-    runs-on: ubuntu-latest
+    runs-on: linux-latest
     outputs:
       use-cirrus-runners: ${{ steps.runners.outputs.use-cirrus-runners }}
     steps:
@@ -41,7 +41,7 @@ jobs:
 
   test-each-commit:
     name: 'test each commit'
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.01
     if: github.event_name == 'pull_request' && github.event.pull_request.commits != 1
     timeout-minutes: 360  # Use maximum time, see https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idtimeout-minutes. Assuming a worst case time of 1 hour per commit, this leads to a --max-count=6 below.
     env:
@@ -91,11 +91,11 @@ jobs:
           # Use clang++, because it is a bit faster and uses less memory than g++
           git rebase --exec "echo Running test-one-commit on \$( git log -1 ) && ./autogen.sh && CC=clang CXX=clang++ ./configure --with-incompatible-bdb && make clean && make -j $(nproc) check && ./test/functional/test_runner.py -j $(( $(nproc) * 2 ))" ${{ env.TEST_BASE }}
 
-  macos-native-x86_64:
-    name: 'macOS 14 native, x86_64, no depends, sqlite only, gui'
+  linux-arm64:
+    name: 'linux-latest, x86_64, no depends, sqlite only, gui'
     # Use latest image, but hardcode version to avoid silent upgrades (and breaks).
     # See: https://github.com/actions/runner-images#available-images.
-    runs-on: macos-14
+    runs-on: linux-latests
 
     # No need to run on the read-only mirror, unless it is a PR.
     if: github.repository != 'bitcoin-core/gui' || github.event_name == 'pull_request'
@@ -110,7 +110,7 @@ jobs:
     steps:
       - &CHECKOUT
         name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           # Ensure the latest merged pull request state is used, even on re-runs.
           ref: &CHECKOUT_REF_TMPL ${{ github.event_name == 'pull_request' && github.ref || '' }}
@@ -133,7 +133,7 @@ jobs:
 
       - name: Restore Ccache cache
         id: ccache-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: ${{ env.CCACHE_DIR }}
           key: ${{ github.job }}-ccache-${{ github.run_id }}
@@ -154,7 +154,7 @@ jobs:
     name: 'Win64 native, VS 2022'
     # Use latest image, but hardcode version to avoid silent upgrades (and breaks).
     # See: https://github.com/actions/runner-images#available-images.
-    runs-on: windows-2022
+    runs-on: windows-latest
 
     # No need to run on the read-only mirror, unless it is a PR.
     if: github.repository != 'bitcoin-core/gui' || github.event_name == 'pull_request'
@@ -235,14 +235,14 @@ jobs:
 
       - name: Save static Qt cache
         if: steps.static-qt-cache.outputs.cache-hit != 'true'
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6
         with:
           path: C:\Qt_static
           key: ${{ github.job }}-static-qt-${{ hashFiles('msbuild_version', 'qt_url', 'qt_conf') }}
 
       - name: Ccache installation cache
         id: ccache-installation-cache
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: |
             C:\ProgramData\chocolatey\lib\ccache
@@ -259,7 +259,7 @@ jobs:
 
       - name: Restore Ccache cache
         id: ccache-cache
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v5
         with:
           path: ~/AppData/Local/ccache
           key: ${{ github.job }}-ccache-${{ github.run_id }}
@@ -273,13 +273,13 @@ jobs:
           git rev-parse HEAD | Tee-Object -FilePath "$env:GITHUB_WORKSPACE\vcpkg_commit"
 
       - name: vcpkg tools cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: C:/vcpkg/downloads/tools
           key: ${{ github.job }}-vcpkg-tools
 
       - name: vcpkg binary cache
-        uses: actions/cache@v5
+        uses: actions/cache@v6
         with:
           path: ~/AppData/Local/vcpkg/archives
           key: ${{ github.job }}-vcpkg-binary-${{ hashFiles('vcpkg_commit', 'msbuild_version', 'toolset_version', 'build_msvc/vcpkg.json') }}
@@ -297,7 +297,7 @@ jobs:
         run: ccache --show-stats
 
       - name: Save Ccache cache
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v5
         if: github.event_name != 'pull_request' && steps.ccache-cache.outputs.cache-hit != 'true'
         with:
           path: ~/AppData/Local/ccache
@@ -354,8 +354,8 @@ jobs:
       matrix:
         include:
           - name: 'ARM, unit tests, no functional tests'
-            cirrus-runner: 'ubuntu-24.04-arm' # Cirrus' Arm runners are Apple (with virtual Linux aarch64), which doesn't support 32-bit mode
-            fallback-runner: 'ubuntu-24.04-arm'
+            cirrus-runner: 'linux-arm64' # Cirrus' Arm runners are Apple (with virtual Linux aarch64), which doesn't support 32-bit mode
+            fallback-runner: 'linux-arm8'
             timeout-minutes: 120
             file-env: './ci/test/00_setup_env_arm.sh'
 
@@ -367,7 +367,7 @@ jobs:
 
           - name: 'ASan + LSan + UBSan + integer, no depends, USDT'
             cirrus-runner: 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-md' # has to match container in ci/test/00_setup_env_native_asan.sh for tracing tools
-            fallback-runner: 'ubuntu-24.04'
+            fallback-runner: 'ubuntu-26.041
             timeout-minutes: 120
             file-env: './ci/test/00_setup_env_native_asan.sh'
 
