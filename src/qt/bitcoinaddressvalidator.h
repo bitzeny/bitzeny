@@ -1,9 +1,9 @@
-// Copyright (c) 2011-2014 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2011-2020 The Bitcoin Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef BITCOINADDRESSVALIDATOR_H
-#define BITCOINADDRESSVALIDATOR_H
+#ifndef BITCOIN_QT_BITCOINADDRESSVALIDATOR_H
+#define BITCOIN_QT_BITCOINADDRESSVALIDATOR_H
 
 #include <QValidator>
 
@@ -17,7 +17,7 @@ class BitcoinAddressEntryValidator : public QValidator
 public:
     explicit BitcoinAddressEntryValidator(QObject *parent);
 
-    State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 };
 
 /** Bitcoin address widget validator, checks for a valid bitcoin address.
@@ -29,7 +29,7 @@ class BitcoinAddressCheckValidator : public QValidator
 public:
     explicit BitcoinAddressCheckValidator(QObject *parent);
 
-    State validate(QString &input, int &pos) const;
+    State validate(QString &input, int &pos) const override;
 };
 
-#endif // BITCOINADDRESSVALIDATOR_H
+#endif // BITCOIN_QT_BITCOINADDRESSVALIDATOR_H

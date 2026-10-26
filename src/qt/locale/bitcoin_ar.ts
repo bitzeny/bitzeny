@@ -1,1746 +1,1517 @@
-<TS language="ar" version="2.1">
+<TS version="2.1" language="ar">
 <context>
     <name>AddressBookPage</name>
     <message>
-        <source>Double-click to edit address or label</source>
-        <translation>أنقر بالماوس مرتين لتعديل العنوان او الوصف</translation>
-    </message>
-    <message>
-        <source>Create a new address</source>
-        <translation>انشأ عنوان جديد</translation>
-    </message>
-    <message>
-        <source>&amp;New</source>
-        <translation>&amp;جديد</translation>
-    </message>
-    <message>
-        <source>Copy the currently selected address to the system clipboard</source>
-        <translation>قم بنسخ القوانين المختارة لحافظة النظام</translation>
-    </message>
-    <message>
-        <source>&amp;Copy</source>
-        <translation>&amp;نسخ</translation>
-    </message>
-    <message>
-        <source>C&amp;lose</source>
-        <translation>&amp;اغلاق</translation>
-    </message>
-    <message>
-        <source>&amp;Copy Address</source>
-        <translation>انسخ العنوان</translation>
-    </message>
-    <message>
-        <source>Delete the currently selected address from the list</source>
-        <translation>حذف العنوان المحدد من القائمة</translation>
+        <source>Enter address or label to search</source>
+        <translation type="unfinished">أدخل عنوانا أو مذكرة للبحث</translation>
     </message>
     <message>
         <source>&amp;Export</source>
-        <translation>&amp;تصدير</translation>
-    </message>
-    <message>
-        <source>&amp;Delete</source>
-        <translation>&amp;أمسح</translation>
-    </message>
-    <message>
-        <source>Choose the address to send coins to</source>
-        <translation>اختر العنوان الذي سترسل له العملات</translation>
-    </message>
-    <message>
-        <source>Choose the address to receive coins with</source>
-        <translation>اختر العنوان الذي تستقبل عليه العملات</translation>
-    </message>
-    <message>
-        <source>C&amp;hoose</source>
-        <translation>&amp;اختر</translation>
-    </message>
-    <message>
-        <source>Sending addresses</source>
-        <translation>ارسال العناوين</translation>
-    </message>
-    <message>
-        <source>Receiving addresses</source>
-        <translation>استقبال العناوين</translation>
-    </message>
-    <message>
-        <source>Copy &amp;Label</source>
-        <translation>نسخ &amp;الوصف</translation>
-    </message>
-    <message>
-        <source>&amp;Edit</source>
-        <translation>تعديل</translation>
-    </message>
-    <message>
-        <source>Export Address List</source>
-        <translation>تصدير قائمة العناوين</translation>
-    </message>
-    <message>
-        <source>Exporting Failed</source>
-        <translation>فشل التصدير</translation>
+        <translation type="unfinished">و إستخرج</translation>
     </message>
     </context>
 <context>
-    <name>AddressTableModel</name>
+    <name>QObject</name>
     <message>
-        <source>Label</source>
-        <translation>وصف</translation>
+        <source>Error: %1</source>
+        <translation type="unfinished">خطأ: %1</translation>
     </message>
     <message>
-        <source>Address</source>
-        <translation>عنوان</translation>
-    </message>
-    <message>
-        <source>(no label)</source>
-        <translation>(لا وصف)</translation>
-    </message>
-</context>
-<context>
-    <name>AskPassphraseDialog</name>
-    <message>
-        <source>Enter passphrase</source>
-        <translation>ادخل كلمة المرور</translation>
-    </message>
-    <message>
-        <source>New passphrase</source>
-        <translation>كلمة مرور جديدة</translation>
-    </message>
-    <message>
-        <source>Repeat new passphrase</source>
-        <translation>ادخل كلمة المرور الجديدة مرة أخرى</translation>
-    </message>
-    <message>
-        <source>Encrypt wallet</source>
-        <translation>تشفير المحفظة</translation>
-    </message>
-    <message>
-        <source>This operation needs your wallet passphrase to unlock the wallet.</source>
-        <translation>هذه العملية تحتاج كلمة مرور محفظتك لفتحها</translation>
-    </message>
-    <message>
-        <source>Unlock wallet</source>
-        <translation>إفتح المحفظة</translation>
-    </message>
-    <message>
-        <source>This operation needs your wallet passphrase to decrypt the wallet.</source>
-        <translation>هذه العملية تحتاج كلمة مرور محفظتك لفك تشفيرها </translation>
-    </message>
-    <message>
-        <source>Decrypt wallet</source>
-        <translation>فك تشفير المحفظة</translation>
-    </message>
-    <message>
-        <source>Change passphrase</source>
-        <translation>تغيير كلمة المرور</translation>
-    </message>
-    <message>
-        <source>Enter the old and new passphrase to the wallet.</source>
-        <translation>أدخل كلمة المرور القديمة والجديدة للمحفظة.</translation>
-    </message>
-    <message>
-        <source>Confirm wallet encryption</source>
-        <translation>تأكيد تشفير المحفظة</translation>
-    </message>
-    <message>
-        <source>Warning: The Caps Lock key is on!</source>
-        <translation>تحذير: مفتاح الحروف الكبيرة مفعل</translation>
-    </message>
-    <message>
-        <source>Wallet encrypted</source>
-        <translation>محفظة مشفرة</translation>
-    </message>
-    <message>
-        <source>Bitcoin will close now to finish the encryption process. Remember that encrypting your wallet cannot fully protect your bitcoins from being stolen by malware infecting your computer.</source>
-        <translation>بتكوين سوف يغلق الآن لإنهاء عملية التشفير. تذكر أن التشفير لا يستطيع حماية محفظتك تمامًا من السرقة من خلال البرمجيات الخبيثة التي تصيب جهازك </translation>
-    </message>
-    <message>
-        <source>Wallet encryption failed</source>
-        <translation>فشل تشفير المحفظة</translation>
-    </message>
-    <message>
-        <source>Wallet encryption failed due to an internal error. Your wallet was not encrypted.</source>
-        <translation>فشل تشفير المحفظة بسبب خطأ داخلي. لم يتم تشفير محفظتك.</translation>
-    </message>
-    <message>
-        <source>The supplied passphrases do not match.</source>
-        <translation>كلمتي المرور ليستا متطابقتان</translation>
-    </message>
-    <message>
-        <source>Wallet unlock failed</source>
-        <translation>فشل فتح المحفظة</translation>
-    </message>
-    <message>
-        <source>The passphrase entered for the wallet decryption was incorrect.</source>
-        <translation>كلمة المرور التي تم إدخالها لفك تشفير المحفظة غير صحيحة.</translation>
-    </message>
-    <message>
-        <source>Wallet decryption failed</source>
-        <translation>فشل   فك التشفير المحفظة</translation>
-    </message>
-    </context>
-<context>
-    <name>BitcoinGUI</name>
-    <message>
-        <source>Sign &amp;message...</source>
-        <translation>التوقيع و الرسائل</translation>
-    </message>
-    <message>
-        <source>Synchronizing with network...</source>
-        <translation>مزامنة مع الشبكة ...</translation>
-    </message>
-    <message>
-        <source>&amp;Overview</source>
-        <translation>&amp;نظرة عامة</translation>
-    </message>
-    <message>
-        <source>Node</source>
-        <translation>جهاز</translation>
-    </message>
-    <message>
-        <source>Show general overview of wallet</source>
-        <translation>إظهار نظرة عامة على المحفظة</translation>
-    </message>
-    <message>
-        <source>&amp;Transactions</source>
-        <translation>&amp;المعاملات</translation>
-    </message>
-    <message>
-        <source>Browse transaction history</source>
-        <translation>تصفح سجل المعاملات</translation>
-    </message>
-    <message>
-        <source>E&amp;xit</source>
-        <translation>خروج</translation>
-    </message>
-    <message>
-        <source>Quit application</source>
-        <translation>الخروج من التطبيق</translation>
-    </message>
-    <message>
-        <source>About &amp;Qt</source>
-        <translation>عن</translation>
-    </message>
-    <message>
-        <source>Show information about Qt</source>
-        <translation>اظهر المعلومات</translation>
-    </message>
-    <message>
-        <source>&amp;Options...</source>
-        <translation>&amp;خيارات ...</translation>
-    </message>
-    <message>
-        <source>&amp;Encrypt Wallet...</source>
-        <translation>&amp;تشفير المحفظة</translation>
-    </message>
-    <message>
-        <source>&amp;Backup Wallet...</source>
-        <translation>&amp;نسخ احتياط للمحفظة</translation>
-    </message>
-    <message>
-        <source>&amp;Change Passphrase...</source>
-        <translation>&amp;تغيير كلمة المرور</translation>
-    </message>
-    <message>
-        <source>Open &amp;URI...</source>
-        <translation>افتح &amp;URI...</translation>
-    </message>
-    <message>
-        <source>Send coins to a Bitcoin address</source>
-        <translation>ارسل عملات الى عنوان بيتكوين</translation>
-    </message>
-    <message>
-        <source>Backup wallet to another location</source>
-        <translation>احفظ نسخة احتياطية للمحفظة في مكان آخر</translation>
-    </message>
-    <message>
-        <source>Change the passphrase used for wallet encryption</source>
-        <translation>تغيير كلمة المرور المستخدمة لتشفير المحفظة</translation>
-    </message>
-    <message>
-        <source>&amp;Debug window</source>
-        <translation>&amp;نافذة المعالجة</translation>
-    </message>
-    <message>
-        <source>&amp;Verify message...</source>
-        <translation>&amp;التحقق من الرسالة...</translation>
-    </message>
-    <message>
-        <source>Bitcoin</source>
-        <translation>بت كوين</translation>
-    </message>
-    <message>
-        <source>Wallet</source>
-        <translation>محفظة</translation>
-    </message>
-    <message>
-        <source>&amp;Receive</source>
-        <translation>&amp;استقبل</translation>
-    </message>
-    <message>
-        <source>&amp;Show / Hide</source>
-        <translation>&amp;عرض / اخفاء</translation>
-    </message>
-    <message>
-        <source>Show or hide the main Window</source>
-        <translation>عرض او اخفاء النافذة الرئيسية</translation>
-    </message>
-    <message>
-        <source>&amp;File</source>
-        <translation>&amp;ملف</translation>
-    </message>
-    <message>
-        <source>&amp;Settings</source>
-        <translation>&amp;الاعدادات</translation>
-    </message>
-    <message>
-        <source>&amp;Help</source>
-        <translation>&amp;مساعدة</translation>
-    </message>
-    <message>
-        <source>Tabs toolbar</source>
-        <translation>شريط أدوات علامات التبويب</translation>
-    </message>
-    <message>
-        <source>[testnet]</source>
-        <translation>[testnet]</translation>
-    </message>
-    <message>
-        <source>Bitcoin Core</source>
-        <translation>جوهر البيت كوين</translation>
-    </message>
-    <message numerus="yes">
-        <source>%n hour(s)</source>
-        <translation><numerusform>%n ساعة</numerusform><numerusform>%n ساعة</numerusform><numerusform>%n ساعة</numerusform><numerusform>%n ساعات</numerusform><numerusform>%n ساعات</numerusform><numerusform>%n ساعات</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n day(s)</source>
-        <translation><numerusform>%n يوم</numerusform><numerusform>%n يوم</numerusform><numerusform>%n يوم</numerusform><numerusform>%n أيام</numerusform><numerusform>%n أيام</numerusform><numerusform>%n ايام</numerusform></translation>
-    </message>
-    <message numerus="yes">
-        <source>%n week(s)</source>
-        <translation><numerusform>%n اسبوع</numerusform><numerusform>%n اسبوع</numerusform><numerusform>%n اسبوع</numerusform><numerusform>%n اسابيع</numerusform><numerusform>%n اسابيع</numerusform><numerusform>%n اسابيع</numerusform></translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>خطأ</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation>تحذير</translation>
-    </message>
-    <message>
-        <source>Information</source>
-        <translation>معلومات</translation>
-    </message>
-    <message>
-        <source>Up to date</source>
-        <translation>محدث</translation>
-    </message>
-    <message>
-        <source>Catching up...</source>
-        <translation>اللحاق بالركب ...</translation>
-    </message>
-    <message>
-        <source>Sent transaction</source>
-        <translation>المعاملات  المرسلة</translation>
-    </message>
-    <message>
-        <source>Incoming transaction</source>
-        <translation>المعاملات الواردة</translation>
-    </message>
-    <message>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;unlocked&lt;/b&gt;</source>
-        <translation>المحفظة &lt;b&gt;مشفرة&lt;/b&gt; و &lt;b&gt;مفتوحة&lt;/b&gt; حاليا</translation>
-    </message>
-    <message>
-        <source>Wallet is &lt;b&gt;encrypted&lt;/b&gt; and currently &lt;b&gt;locked&lt;/b&gt;</source>
-        <translation>المحفظة &lt;b&gt;مشفرة&lt;/b&gt; و &lt;b&gt;مقفلة&lt;/b&gt; حاليا</translation>
-    </message>
-</context>
-<context>
-    <name>ClientModel</name>
-    <message>
-        <source>Network Alert</source>
-        <translation>تنبيه من الشبكة</translation>
-    </message>
-</context>
-<context>
-    <name>CoinControlDialog</name>
-    <message>
-        <source>Quantity:</source>
-        <translation>الكمية:</translation>
-    </message>
-    <message>
-        <source>Amount:</source>
-        <translation>القيمة</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>افضلية :</translation>
-    </message>
-    <message>
-        <source>Fee:</source>
-        <translation>رسوم :</translation>
-    </message>
-    <message>
-        <source>After Fee:</source>
-        <translation>بعد الرسوم :</translation>
-    </message>
-    <message>
-        <source>Change:</source>
-        <translation>تعديل :</translation>
+        <source>%1 didn't yet exit safely…</source>
+        <translation type="unfinished">‫%1 لم يغلق بامان بعد…‬</translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>المبلغ</translation>
+        <translation type="unfinished">‫القيمة‬</translation>
     </message>
     <message>
-        <source>Address</source>
-        <translation>عنوان</translation>
+        <source>Enter a Bitcoin address (e.g. %1)</source>
+        <translation type="unfinished">ادخل عنوان محفطة البتكوين (مثال %1)</translation>
+    </message>
+    <message>
+        <source>Unroutable</source>
+        <translation type="unfinished">‫غير قابل للتوجيه‬</translation>
+    </message>
+    <message>
+        <source>Inbound</source>
+        <extracomment>An inbound connection from a peer. An inbound connection is a connection initiated by a peer.</extracomment>
+        <translation type="unfinished">‫وارد‬</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <extracomment>An outbound connection to a peer. An outbound connection is a connection initiated by us.</extracomment>
+        <translation type="unfinished">‫صادر‬</translation>
+    </message>
+    <message>
+        <source>Full Relay</source>
+        <extracomment>Peer connection type that relays all network information.</extracomment>
+        <translation type="unfinished">‫موصل كامل‬</translation>
+    </message>
+    <message>
+        <source>Block Relay</source>
+        <extracomment>Peer connection type that relays network information about blocks and not transactions or addresses.</extracomment>
+        <translation type="unfinished">‫موصل طابق‬</translation>
+    </message>
+    <message>
+        <source>Manual</source>
+        <extracomment>Peer connection type established manually through one of several methods.</extracomment>
+        <translation type="unfinished">يدوي</translation>
+    </message>
+    <message>
+        <source>Feeler</source>
+        <extracomment>Short-lived peer connection type that tests the aliveness of known addresses.</extracomment>
+        <translation type="unfinished">‫تفقدي‬</translation>
+    </message>
+    <message>
+        <source>Address Fetch</source>
+        <extracomment>Short-lived peer connection type that solicits known addresses from a peer.</extracomment>
+        <translation type="unfinished">‫جلب العنوان‬</translation>
+    </message>
+    <message>
+        <source>%1 d</source>
+        <translation type="unfinished">%1 يوم</translation>
+    </message>
+    <message>
+        <source>%1 h</source>
+        <translation type="unfinished">%1 ساعة</translation>
+    </message>
+    <message>
+        <source>%1 m</source>
+        <translation type="unfinished">%1 دقيقة</translation>
+    </message>
+    <message>
+        <source>%1 s</source>
+        <translation type="unfinished">%1 ثانية</translation>
+    </message>
+    <message>
+        <source>None</source>
+        <translation type="unfinished">لا شيء</translation>
+    </message>
+    <message>
+        <source>N/A</source>
+        <translation type="unfinished">غير معروف</translation>
+    </message>
+    <message>
+        <source>%1 ms</source>
+        <translation type="unfinished">%1 جزء من الثانية</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n second(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n second(s)</numerusform>
+            <numerusform>%n second(s)</numerusform>
+            <numerusform>%n second(s)</numerusform>
+            <numerusform>%n second(s)</numerusform>
+            <numerusform>%n second(s)</numerusform>
+            <numerusform>%n‫‫ ثواني‬</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n minute(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n minute(s)</numerusform>
+            <numerusform>%n minute(s)</numerusform>
+            <numerusform>%n minute(s)</numerusform>
+            <numerusform>%n minute(s)</numerusform>
+            <numerusform>%n minute(s)</numerusform>
+            <numerusform>%n ‫دقائق‬</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n hour(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n hour(s)</numerusform>
+            <numerusform>%n hour(s)</numerusform>
+            <numerusform>%n hour(s)</numerusform>
+            <numerusform>%n hour(s)</numerusform>
+            <numerusform>%n hour(s)</numerusform>
+            <numerusform>%n‫ساعات‬</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n day(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n day(s)</numerusform>
+            <numerusform>%n day(s)</numerusform>
+            <numerusform>%n day(s)</numerusform>
+            <numerusform>%n day(s)</numerusform>
+            <numerusform>%n day(s)</numerusform>
+            <numerusform>%n ‫أيام‬</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>%n week(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n week(s)</numerusform>
+            <numerusform>%n week(s)</numerusform>
+            <numerusform>%n week(s)</numerusform>
+            <numerusform>%n week(s)</numerusform>
+            <numerusform>%n week(s)</numerusform>
+            <numerusform>%n ‫أسابيع‬</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 and %2</source>
+        <translation type="unfinished">%1 و %2</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n year(s)</source>
+        <translation type="unfinished">
+            <numerusform>%n year(s)</numerusform>
+            <numerusform>%n year(s)</numerusform>
+            <numerusform>%n year(s)</numerusform>
+            <numerusform>%n year(s)</numerusform>
+            <numerusform>%n year(s)</numerusform>
+            <numerusform>%n ‫سنوات‬</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 B</source>
+        <translation type="unfinished">%1 بايت</translation>
+    </message>
+    <message>
+        <source>%1 kB</source>
+        <translation type="unfinished">%1 كيلو بايت</translation>
+    </message>
+    <message>
+        <source>%1 MB</source>
+        <translation type="unfinished">%1 ‫ميجابايت‬</translation>
+    </message>
+    <message>
+        <source>%1 GB</source>
+        <translation type="unfinished">%1 ‫جيجابايت‬</translation>
+    </message>
+    <message>
+        <source>default wallet</source>
+        <translation type="unfinished">‫محفظة افتراضية‬</translation>
+    </message>
+</context>
+<context>
+    <name>BitcoinGUI</name>
+    <message>
+        <source>&amp;Overview</source>
+        <translation type="unfinished">&amp;نظرة عامة</translation>
+    </message>
+    <message>
+        <source>Show general overview of wallet</source>
+        <translation type="unfinished">إظهار نظرة عامة على المحفظة</translation>
+    </message>
+    <message>
+        <source>&amp;Transactions</source>
+        <translation type="unfinished">&amp;المعاملات</translation>
+    </message>
+    <message>
+        <source>Browse transaction history</source>
+        <translation type="unfinished">تصفح تاريخ العمليات</translation>
+    </message>
+    <message>
+        <source>E&amp;xit</source>
+        <translation type="unfinished">خروج</translation>
+    </message>
+    <message>
+        <source>Quit application</source>
+        <translation type="unfinished">إغلاق التطبيق</translation>
+    </message>
+    <message>
+        <source>&amp;About %1</source>
+        <translation type="unfinished">حوالي %1</translation>
+    </message>
+    <message>
+        <source>Show information about %1</source>
+        <translation type="unfinished">أظهر المعلومات حولة %1</translation>
+    </message>
+    <message>
+        <source>About &amp;Qt</source>
+        <translation type="unfinished">عن &amp;Qt</translation>
+    </message>
+    <message>
+        <source>Show information about Qt</source>
+        <translation type="unfinished">اظهر المعلومات</translation>
+    </message>
+    <message>
+        <source>Modify configuration options for %1</source>
+        <translation type="unfinished">تغيير خيارات الإعداد لأساس ل%1</translation>
+    </message>
+    <message>
+        <source>Create a new wallet</source>
+        <translation type="unfinished">إنشاء محفظة جديدة</translation>
+    </message>
+    <message>
+        <source>Wallet:</source>
+        <translation type="unfinished">المحفظة:</translation>
+    </message>
+    <message>
+        <source>Network activity disabled.</source>
+        <extracomment>A substring of the tooltip.</extracomment>
+        <translation type="unfinished">تم إلغاء تفعيل الشبكه</translation>
+    </message>
+    <message>
+        <source>Proxy is &lt;b&gt;enabled&lt;/b&gt;: %1</source>
+        <translation type="unfinished">%1 اتصال نشط بشبكة البيتكوين</translation>
+    </message>
+    <message>
+        <source>Send coins to a Bitcoin address</source>
+        <translation type="unfinished">ارسل عملات الى عنوان بيتكوين</translation>
+    </message>
+    <message>
+        <source>Backup wallet to another location</source>
+        <translation type="unfinished">احفظ نسخة احتياطية للمحفظة في مكان آخر</translation>
+    </message>
+    <message>
+        <source>Change the passphrase used for wallet encryption</source>
+        <translation type="unfinished">تغيير كلمة المرور المستخدمة لتشفير المحفظة</translation>
+    </message>
+    <message>
+        <source>&amp;Send</source>
+        <translation type="unfinished">&amp;ارسل</translation>
+    </message>
+    <message>
+        <source>&amp;Receive</source>
+        <translation type="unfinished">&amp;استقبل</translation>
+    </message>
+    <message>
+        <source>&amp;Encrypt Wallet…</source>
+        <translation type="unfinished">&amp; تشفير المحفظة</translation>
+    </message>
+    <message>
+        <source>Encrypt the private keys that belong to your wallet</source>
+        <translation type="unfinished">تشفير المفتاح الخاص بمحفظتك</translation>
+    </message>
+    <message>
+        <source>&amp;Backup Wallet…</source>
+        <translation type="unfinished">&amp; محفظة احتياطية</translation>
+    </message>
+    <message>
+        <source>&amp;Change Passphrase…</source>
+        <translation type="unfinished">وتغيير العبارات...</translation>
+    </message>
+    <message>
+        <source>Sign &amp;message…</source>
+        <translation type="unfinished">علامة ورسالة...</translation>
+    </message>
+    <message>
+        <source>Sign messages with your Bitcoin addresses to prove you own them</source>
+        <translation type="unfinished">وقَع الرسائل بواسطة ال: Bitcoin الخاص بك لإثبات امتلاكك لهم</translation>
+    </message>
+    <message>
+        <source>&amp;Verify message…</source>
+        <translation type="unfinished">&amp; تحقق من الرسالة</translation>
+    </message>
+    <message>
+        <source>Verify messages to ensure they were signed with specified Bitcoin addresses</source>
+        <translation type="unfinished">تحقق من الرسائل للتأكد من أنَها وُقعت برسائل Bitcoin محدَدة</translation>
+    </message>
+    <message>
+        <source>&amp;Load PSBT from file…</source>
+        <translation type="unfinished">وتحميل PSBT من ملف...</translation>
+    </message>
+    <message>
+        <source>Open &amp;URI…</source>
+        <translation type="unfinished">فتح ورابط...</translation>
+    </message>
+    <message>
+        <source>Close Wallet…</source>
+        <translation type="unfinished">اغلاق المحفظة</translation>
+    </message>
+    <message>
+        <source>Create Wallet…</source>
+        <translation type="unfinished">انشاء المحفظة</translation>
+    </message>
+    <message>
+        <source>Close All Wallets…</source>
+        <translation type="unfinished">اغلاق جميع المحافظ</translation>
+    </message>
+    <message>
+        <source>&amp;File</source>
+        <translation type="unfinished">&amp;ملف</translation>
+    </message>
+    <message>
+        <source>&amp;Settings</source>
+        <translation type="unfinished">&amp;الاعدادات</translation>
+    </message>
+    <message>
+        <source>&amp;Help</source>
+        <translation type="unfinished">&amp;مساعدة</translation>
+    </message>
+    <message>
+        <source>Tabs toolbar</source>
+        <translation type="unfinished">شريط أدوات علامات التبويب</translation>
+    </message>
+    <message>
+        <source>Synchronizing with network…</source>
+        <translation type="unfinished">مزامنة مع الشبكة ...</translation>
+    </message>
+    <message>
+        <source>Indexing blocks on disk…</source>
+        <translation type="unfinished">كتل الفهرسة على القرص ...</translation>
+    </message>
+    <message>
+        <source>Processing blocks on disk…</source>
+        <translation type="unfinished">كتل المعالجة على القرص ...</translation>
+    </message>
+    <message>
+        <source>Connecting to peers…</source>
+        <translation type="unfinished">‫الاتصال بالأقران…‬</translation>
+    </message>
+    <message>
+        <source>Request payments (generates QR codes and bitcoin: URIs)</source>
+        <translation type="unfinished">‫أطلب مدفوعات (أنشئ رموز استجابة (QR Codes) وعناوين بتكوين)‬</translation>
+    </message>
+    <message>
+        <source>Show the list of used sending addresses and labels</source>
+        <translation type="unfinished">‫عرض قائمة العناوين المرسِلة والمذكرات (المستخدمة سابقا)‬</translation>
+    </message>
+    <message>
+        <source>Show the list of used receiving addresses and labels</source>
+        <translation type="unfinished">‫عرض قائمة العناوين المستلمة والمذكرات (المستخدمة سابقا)‬</translation>
+    </message>
+    <message>
+        <source>&amp;Command-line options</source>
+        <translation type="unfinished">&amp;خيارات سطر الأوامر</translation>
+    </message>
+    <message numerus="yes">
+        <source>Processed %n block(s) of transaction history.</source>
+        <translation type="unfinished">
+            <numerusform>Processed %n block(s) of transaction history.</numerusform>
+            <numerusform>Processed %n block(s) of transaction history.</numerusform>
+            <numerusform>Processed %n block(s) of transaction history.</numerusform>
+            <numerusform>Processed %n block(s) of transaction history.</numerusform>
+            <numerusform>Processed %n block(s) of transaction history.</numerusform>
+            <numerusform>‫تمت معالجة %n طوابق من العمليات التاريخية.‬</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>%1 behind</source>
+        <translation type="unfinished">‫متأخر‬ %1</translation>
+    </message>
+    <message>
+        <source>Catching up…</source>
+        <translation type="unfinished">‫يجري التدارك…‬</translation>
+    </message>
+    <message>
+        <source>Last received block was generated %1 ago.</source>
+        <translation type="unfinished">‫آخر طابق مستلم تم بناءه قبل %1.</translation>
+    </message>
+    <message>
+        <source>Transactions after this will not yet be visible.</source>
+        <translation type="unfinished">‫المعاملات بعد هذه لن تكون ظاهرة فورا.‬</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">خطأ</translation>
+    </message>
+    <message>
+        <source>Warning</source>
+        <translation type="unfinished">تحذير</translation>
+    </message>
+    <message>
+        <source>Information</source>
+        <translation type="unfinished">المعلومات</translation>
+    </message>
+    <message>
+        <source>Up to date</source>
+        <translation type="unfinished">‫حديث‬</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction</source>
+        <translation type="unfinished">‫تحميل معاملة بتكوين موقعة جزئيًا (PSBT)‬</translation>
+    </message>
+    <message>
+        <source>Load PSBT from &amp;clipboard…</source>
+        <translation type="unfinished">‫تحميل معاملة بتكوين موقعة جزئيا (‫PSBT) من &amp;الحافظة…‬</translation>
+    </message>
+    <message>
+        <source>Load Partially Signed Bitcoin Transaction from clipboard</source>
+        <translation type="unfinished">‫تحميل معاملة بتكوين موقعة جزئيًا ‫(‫PSBT) من الحافظة‬</translation>
+    </message>
+    <message>
+        <source>Node window</source>
+        <translation type="unfinished">‫نافذة النود‬</translation>
+    </message>
+    <message>
+        <source>Open node debugging and diagnostic console</source>
+        <translation type="unfinished">‫افتح وحدة التحكم في تصحيح الأخطاء والتشخيص للنود‬</translation>
+    </message>
+    <message>
+        <source>&amp;Sending addresses</source>
+        <translation type="unfinished">‫&amp;عناوين الإرسال‬</translation>
+    </message>
+    <message>
+        <source>&amp;Receiving addresses</source>
+        <translation type="unfinished">‫&amp;عناوين الإستلام‬</translation>
+    </message>
+    <message>
+        <source>Open a bitcoin: URI</source>
+        <translation type="unfinished">‫افتح رابط بتكوين: URI‬</translation>
+    </message>
+    <message>
+        <source>Open Wallet</source>
+        <translation type="unfinished">افتح المحفظة</translation>
+    </message>
+    <message>
+        <source>Open a wallet</source>
+        <translation type="unfinished">‫افتح محفظة‬</translation>
+    </message>
+    <message>
+        <source>Close wallet</source>
+        <translation type="unfinished">اغلق المحفظة</translation>
+    </message>
+    <message>
+        <source>Restore Wallet…</source>
+        <extracomment>Name of the menu item that restores wallet from a backup file.</extracomment>
+        <translation type="unfinished">‫استعادة محفظة…‬</translation>
+    </message>
+    <message>
+        <source>Restore a wallet from a backup file</source>
+        <extracomment>Status tip for Restore Wallet menu item</extracomment>
+        <translation type="unfinished">‫استعادة محفظة من ملف النسخ الاحتياطي‬</translation>
+    </message>
+    <message>
+        <source>Close all wallets</source>
+        <translation type="unfinished">‫إغلاق جميع المحافظ‬</translation>
+    </message>
+    <message>
+        <source>Show the %1 help message to get a list with possible Bitcoin command-line options</source>
+        <translation type="unfinished">‫اعرض %1 رسالة المساعدة للحصول على قائمة من خيارات سطر أوامر البتكوين المحتملة‬</translation>
+    </message>
+    <message>
+        <source>&amp;Mask values</source>
+        <translation type="unfinished">&amp;إخفاء القيم</translation>
+    </message>
+    <message>
+        <source>Mask the values in the Overview tab</source>
+        <translation type="unfinished">‫إخفاء القيم في علامة التبويب: نظرة عامة‬</translation>
+    </message>
+    <message>
+        <source>No wallets available</source>
+        <translation type="unfinished">‫لا يوجد محفظة متاحة‬</translation>
+    </message>
+    <message>
+        <source>Wallet Data</source>
+        <extracomment>Name of the wallet data file format.</extracomment>
+        <translation type="unfinished">بيانات المحفظة</translation>
+    </message>
+    <message>
+        <source>Load Wallet Backup</source>
+        <extracomment>The title for Restore Wallet File Windows</extracomment>
+        <translation type="unfinished">‫تحميل النسخة الاحتياطية لمحفظة‬</translation>
+    </message>
+    <message>
+        <source>Wallet Name</source>
+        <extracomment>Label of the input field where the name of the wallet is entered.</extracomment>
+        <translation type="unfinished">إسم المحفظة</translation>
+    </message>
+    <message>
+        <source>&amp;Window</source>
+        <translation type="unfinished">&amp;نافذة</translation>
+    </message>
+    <message>
+        <source>Zoom</source>
+        <translation type="unfinished">تكبير</translation>
+    </message>
+    <message>
+        <source>Main Window</source>
+        <translation type="unfinished">النافذة الرئيسية</translation>
+    </message>
+    <message>
+        <source>%1 client</source>
+        <translation type="unfinished">‫العميل %1</translation>
+    </message>
+    <message>
+        <source>&amp;Hide</source>
+        <translation type="unfinished">‫&amp;اخفاء‬</translation>
+    </message>
+    <message>
+        <source>S&amp;how</source>
+        <translation type="unfinished">‫ع&amp;رض‬</translation>
+    </message>
+    <message numerus="yes">
+        <source>%n active connection(s) to Bitcoin network.</source>
+        <extracomment>A substring of the tooltip.</extracomment>
+        <translation type="unfinished">
+            <numerusform>%n active connection(s) to Bitcoin network.</numerusform>
+            <numerusform>%n active connection(s) to Bitcoin network.</numerusform>
+            <numerusform>%n active connection(s) to Bitcoin network.</numerusform>
+            <numerusform>%n active connection(s) to Bitcoin network.</numerusform>
+            <numerusform>%n active connection(s) to Bitcoin network.</numerusform>
+            <numerusform>%n اتصال نشط بشبكة البتكوين.</numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Click for more actions.</source>
+        <extracomment>A substring of the tooltip. "More actions" are available via the context menu.</extracomment>
+        <translation type="unfinished">انقر لمزيد من الإجراءات.</translation>
+    </message>
+    <message>
+        <source>Show Peers tab</source>
+        <extracomment>A context menu item. The "Peers tab" is an element of the "Node window".</extracomment>
+        <translation type="unfinished">‫إظهار تبويب الأقران‬</translation>
+    </message>
+    <message>
+        <source>Disable network activity</source>
+        <extracomment>A context menu item.</extracomment>
+        <translation type="unfinished">تعطيل نشاط الشبكة</translation>
+    </message>
+    <message>
+        <source>Enable network activity</source>
+        <extracomment>A context menu item. The network activity was disabled previously.</extracomment>
+        <translation type="unfinished">تمكين نشاط الشبكة</translation>
+    </message>
+    <message>
+        <source>Pre-syncing Headers (%1%)…</source>
+        <translation type="unfinished">ما قبل مزامنة الرؤوس (%1%)…</translation>
+    </message>
+    <message>
+        <source>Error: %1</source>
+        <translation type="unfinished">خطأ: %1</translation>
+    </message>
+    <message>
+        <source>Private key &lt;b&gt;disabled&lt;/b&gt;</source>
+        <translation type="unfinished">المفتاح الخاص &lt;b&gt;معطل&lt;/b&gt;</translation>
+    </message>
+    </context>
+<context>
+    <name>CoinControlDialog</name>
+    <message>
+        <source>After Fee:</source>
+        <translation type="unfinished">بعد الرسوم:</translation>
+    </message>
+    <message>
+        <source>Change:</source>
+        <translation type="unfinished">تعديل:</translation>
+    </message>
+    <message>
+        <source>(un)select all</source>
+        <translation type="unfinished">‫الغاء تحديد الكل‬</translation>
+    </message>
+    <message>
+        <source>Tree mode</source>
+        <translation type="unfinished">صيغة الشجرة</translation>
+    </message>
+    <message>
+        <source>List mode</source>
+        <translation type="unfinished">صيغة القائمة</translation>
+    </message>
+    <message>
+        <source>Amount</source>
+        <translation type="unfinished">‫القيمة‬</translation>
+    </message>
+    <message>
+        <source>Received with label</source>
+        <translation type="unfinished">‫استُلم وله مذكرة‬</translation>
+    </message>
+    <message>
+        <source>Received with address</source>
+        <translation type="unfinished">‫مستلم مع عنوان‬</translation>
     </message>
     <message>
         <source>Date</source>
-        <translation>التاريخ</translation>
+        <translation type="unfinished">التاريخ</translation>
     </message>
     <message>
         <source>Confirmations</source>
-        <translation>تأكيد</translation>
+        <translation type="unfinished">التأكيدات</translation>
     </message>
     <message>
         <source>Confirmed</source>
-        <translation>تأكيد</translation>
-    </message>
-    <message>
-        <source>Priority</source>
-        <translation>أفضلية</translation>
-    </message>
-    <message>
-        <source>Copy address</source>
-        <translation>  انسخ العنوان</translation>
-    </message>
-    <message>
-        <source>Copy label</source>
-        <translation> انسخ التسمية</translation>
+        <translation type="unfinished">‫نافذ‬</translation>
     </message>
     <message>
         <source>Copy amount</source>
-        <translation>نسخ القيمة</translation>
+        <translation type="unfinished">‫نسخ القيمة‬</translation>
     </message>
     <message>
-        <source>Copy transaction ID</source>
-        <translation>نسخ رقم المعاملة</translation>
+        <source>&amp;Copy address</source>
+        <translation type="unfinished">‫&amp;انسخ العنوان‬</translation>
+    </message>
+    <message>
+        <source>Copy &amp;label</source>
+        <translation type="unfinished">‫نسخ &amp;مذكرة‬</translation>
+    </message>
+    <message>
+        <source>Copy &amp;amount</source>
+        <translation type="unfinished">‫نسخ &amp;القيمة‬</translation>
+    </message>
+    <message>
+        <source>Copy transaction &amp;ID and output index</source>
+        <translation type="unfinished">‫نسخ &amp;معرف العملية وفهرس المخرجات‬</translation>
+    </message>
+    <message>
+        <source>L&amp;ock unspent</source>
+        <translation type="unfinished">قفل غير منفق</translation>
+    </message>
+    <message>
+        <source>&amp;Unlock unspent</source>
+        <translation type="unfinished">&amp; إفتح غير المنفق</translation>
     </message>
     <message>
         <source>Copy quantity</source>
-        <translation>نسخ الكمية</translation>
+        <translation type="unfinished">نسخ الكمية </translation>
     </message>
     <message>
         <source>Copy fee</source>
-        <translation>نسخ الرسوم</translation>
+        <translation type="unfinished">نسخ الرسوم</translation>
     </message>
     <message>
         <source>Copy after fee</source>
-        <translation>نسخ بعد الرسوم</translation>
+        <translation type="unfinished">نسخ بعد الرسوم</translation>
     </message>
     <message>
-        <source>Copy priority</source>
-        <translation>نسخ الافضلية</translation>
+        <source>Copy bytes</source>
+        <translation type="unfinished">نسخ البايتات </translation>
     </message>
     <message>
         <source>Copy change</source>
-        <translation>نسخ التغييرات</translation>
+        <translation type="unfinished">‫نسخ الفكة‬</translation>
     </message>
     <message>
-        <source>highest</source>
-        <translation>الاعلى</translation>
+        <source>(%1 locked)</source>
+        <translation type="unfinished">(%1 تم قفله)</translation>
     </message>
     <message>
-        <source>higher</source>
-        <translation>اعلى</translation>
-    </message>
-    <message>
-        <source>high</source>
-        <translation>عالي</translation>
-    </message>
-    <message>
-        <source>low</source>
-        <translation>منخفض</translation>
-    </message>
-    <message>
-        <source>lower</source>
-        <translation>أدنى</translation>
-    </message>
-    <message>
-        <source>lowest</source>
-        <translation>الأدنى</translation>
-    </message>
-    <message>
-        <source>none</source>
-        <translation>لا شيء</translation>
-    </message>
-    <message>
-        <source>yes</source>
-        <translation>نعم</translation>
-    </message>
-    <message>
-        <source>no</source>
-        <translation>لا</translation>
+        <source>Can vary +/- %1 satoshi(s) per input.</source>
+        <translation type="unfinished">يمكن أن يختلف +/- %1 من ساتوشي(s) لكل إدخال.</translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(لا وصف)</translation>
+        <translation type="unfinished">(بدون وسم)</translation>
+    </message>
+    <message>
+        <source>change from %1 (%2)</source>
+        <translation type="unfinished">تغير من %1 (%2)</translation>
     </message>
     <message>
         <source>(change)</source>
-        <translation>(تغير)</translation>
+        <translation type="unfinished">(تغير)</translation>
     </message>
 </context>
 <context>
-    <name>EditAddressDialog</name>
+    <name>CreateWalletActivity</name>
     <message>
-        <source>Edit Address</source>
-        <translation>عدل العنوان</translation>
+        <source>Create Wallet</source>
+        <extracomment>Title of window indicating the progress of creation of a new wallet.</extracomment>
+        <translation type="unfinished">إنشاء محفظة</translation>
     </message>
     <message>
-        <source>&amp;Label</source>
-        <translation>&amp;وصف</translation>
+        <source>Creating Wallet &lt;b&gt;%1&lt;/b&gt;…</source>
+        <extracomment>Descriptive text of the create wallet progress window which indicates to the user which wallet is currently being created.</extracomment>
+        <translation type="unfinished">جاري انشاء المحفظة &lt;b&gt;%1&lt;/b&gt;... </translation>
     </message>
     <message>
-        <source>&amp;Address</source>
-        <translation>&amp;العنوان</translation>
+        <source>Create wallet failed</source>
+        <translation type="unfinished">فشل إنشاء المحفظة</translation>
     </message>
     <message>
-        <source>New receiving address</source>
-        <translation>عنوان أستلام جديد</translation>
+        <source>Create wallet warning</source>
+        <translation type="unfinished">تحذير إنشاء محفظة</translation>
     </message>
     <message>
-        <source>New sending address</source>
-        <translation>عنوان إرسال جديد</translation>
+        <source>Can't list signers</source>
+        <translation type="unfinished">لا يمكن سرد الموقعين</translation>
     </message>
-    <message>
-        <source>Edit receiving address</source>
-        <translation>تعديل عنوان الأستلام</translation>
-    </message>
-    <message>
-        <source>Edit sending address</source>
-        <translation>تعديل عنوان الارسال</translation>
-    </message>
-    <message>
-        <source>The entered address "%1" is already in the address book.</source>
-        <translation>هدا العنوان "%1" موجود مسبقا في دفتر العناوين</translation>
-    </message>
-    <message>
-        <source>Could not unlock wallet.</source>
-        <translation> يمكن فتح المحفظة.</translation>
-    </message>
-    <message>
-        <source>New key generation failed.</source>
-        <translation>فشل توليد مفتاح جديد.</translation>
-    </message>
-</context>
+    </context>
 <context>
-    <name>FreespaceChecker</name>
+    <name>WalletController</name>
     <message>
-        <source>A new data directory will be created.</source>
-        <translation>سيتم انشاء دليل بيانات جديد</translation>
-    </message>
-    <message>
-        <source>name</source>
-        <translation>الاسم</translation>
-    </message>
-    <message>
-        <source>Cannot create data directory here.</source>
-        <translation>لا يمكن انشاء دليل بيانات هنا .</translation>
-    </message>
-</context>
-<context>
-    <name>HelpMessageDialog</name>
-    <message>
-        <source>Bitcoin Core</source>
-        <translation>جوهر البيت كوين</translation>
-    </message>
-    <message>
-        <source>version</source>
-        <translation>النسخة</translation>
-    </message>
-    <message>
-        <source>About Bitcoin Core</source>
-        <translation>عن جوهر البيت كوين</translation>
-    </message>
-    <message>
-        <source>Usage:</source>
-        <translation>المستخدم</translation>
-    </message>
-    <message>
-        <source>UI options</source>
-        <translation>خيارات UI</translation>
+        <source>Are you sure you wish to close the wallet &lt;i&gt;%1&lt;/i&gt;?</source>
+        <translation type="unfinished">هل أنت متأكد من رغبتك في إغلاق المحفظة &lt;i&gt;%1&lt;/i&gt;؟ </translation>
     </message>
     </context>
 <context>
     <name>Intro</name>
-    <message>
-        <source>Welcome</source>
-        <translation>أهلا</translation>
+    <message numerus="yes">
+        <source>%n GB of space available</source>
+        <translation type="unfinished">
+            <numerusform>%n GB of space available</numerusform>
+            <numerusform>%n GB of space available</numerusform>
+            <numerusform>%n GB of space available</numerusform>
+            <numerusform>%n GB of space available</numerusform>
+            <numerusform>%n GB of space available</numerusform>
+            <numerusform>%n GB of space available</numerusform>
+        </translation>
     </message>
-    <message>
-        <source>Use the default data directory</source>
-        <translation>استخدام دليل البانات الافتراضي</translation>
+    <message numerus="yes">
+        <source>(of %n GB needed)</source>
+        <translation type="unfinished">
+            <numerusform>(of %n GB needed)</numerusform>
+            <numerusform>(of %n GB needed)</numerusform>
+            <numerusform>(of %n GB needed)</numerusform>
+            <numerusform>(of %n GB needed)</numerusform>
+            <numerusform>(of %n GB needed)</numerusform>
+            <numerusform>(of %n GB needed)</numerusform>
+        </translation>
     </message>
-    <message>
-        <source>Use a custom data directory:</source>
-        <translation>استخدام دليل بيانات مخصص:</translation>
+    <message numerus="yes">
+        <source>(%n GB needed for full chain)</source>
+        <translation type="unfinished">
+            <numerusform>(%n GB needed for full chain)</numerusform>
+            <numerusform>(%n GB needed for full chain)</numerusform>
+            <numerusform>(%n GB needed for full chain)</numerusform>
+            <numerusform>(%n GB needed for full chain)</numerusform>
+            <numerusform>(%n GB needed for full chain)</numerusform>
+            <numerusform>(%n GB needed for full chain)</numerusform>
+        </translation>
     </message>
-    <message>
-        <source>Bitcoin Core</source>
-        <translation>جوهر البيت كوين</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>خطأ</translation>
-    </message>
-    <message>
-        <source>GB of free space available</source>
-        <translation>قيقا بايت مساحة متاحة</translation>
+    <message numerus="yes">
+        <source>(sufficient to restore backups %n day(s) old)</source>
+        <extracomment>Explanatory text on the capability of the current prune target.</extracomment>
+        <translation type="unfinished">
+            <numerusform>(sufficient to restore backups %n day(s) old)</numerusform>
+            <numerusform>(sufficient to restore backups %n day(s) old)</numerusform>
+            <numerusform>(sufficient to restore backups %n day(s) old)</numerusform>
+            <numerusform>(sufficient to restore backups %n day(s) old)</numerusform>
+            <numerusform>(sufficient to restore backups %n day(s) old)</numerusform>
+            <numerusform>(sufficient to restore backups %n day(s) old)</numerusform>
+        </translation>
     </message>
     </context>
 <context>
-    <name>OpenURIDialog</name>
-    <message>
-        <source>Select payment request file</source>
-        <translation>حدد ملف طلب الدفع</translation>
-    </message>
-    <message>
-        <source>Select payment request file to open</source>
-        <translation>حدد ملف طلب الدفع لفتحه</translation>
-    </message>
-</context>
-<context>
     <name>OptionsDialog</name>
     <message>
-        <source>Options</source>
-        <translation>خيارات ...</translation>
+        <source>Options set in this dialog are overridden by the command line:</source>
+        <translation type="unfinished">‫التفضيلات المعينة عن طريق سطر الأوامر لها أولوية أكبر وتتجاوز التفضيلات المختارة هنا:‬</translation>
     </message>
     <message>
-        <source>&amp;Main</source>
-        <translation>&amp;الرئيسي</translation>
+        <source>Open the %1 configuration file from the working directory.</source>
+        <translation type="unfinished">‫فتح ملف %1 الإعداد من مجلد العمل.‬</translation>
     </message>
     <message>
-        <source>Pay transaction &amp;fee</source>
-        <translation>ادفع &amp;رسوم المعاملة</translation>
+        <source>Open Configuration File</source>
+        <translation type="unfinished">‫فتح ملف الإعداد‬</translation>
     </message>
     <message>
-        <source>MB</source>
-        <translation>م ب</translation>
-    </message>
-    <message>
-        <source>Accept connections from outside</source>
-        <translation>إقبل التواصل من الخارج</translation>
-    </message>
-    <message>
-        <source>Third party transaction URLs</source>
-        <translation>عنوان النطاق للطرف الثالث</translation>
+        <source>Reset all client options to default.</source>
+        <translation type="unfinished">إعادة تعيين كل إعدادات العميل للحالة الإفتراضية.</translation>
     </message>
     <message>
         <source>&amp;Reset Options</source>
-        <translation>&amp;استعادة الخيارات</translation>
+        <translation type="unfinished">‫&amp;اعادة تهيئة الخيارات‬</translation>
     </message>
     <message>
         <source>&amp;Network</source>
-        <translation>&amp;الشبكة</translation>
+        <translation type="unfinished">&amp;الشبكة</translation>
+    </message>
+    <message>
+        <source>Prune &amp;block storage to</source>
+        <translation type="unfinished">‫اختصار &amp;تخزين الطابق</translation>
+    </message>
+    <message>
+        <source>GB</source>
+        <translation type="unfinished">‫جيجابايت‬</translation>
+    </message>
+    <message>
+        <source>Reverting this setting requires re-downloading the entire blockchain.</source>
+        <translation type="unfinished">‫العودة الى هذا الاعداد تتطلب إعادة تنزيل الطوابق المتتالية بالكامل.‬</translation>
+    </message>
+    <message>
+        <source>Maximum database cache size. A larger cache can contribute to faster sync, after which the benefit is less pronounced for most use cases. Lowering the cache size will reduce memory usage. Unused mempool memory is shared for this cache.</source>
+        <extracomment>Tooltip text for Options window setting that sets the size of the database cache. Explains the corresponding effects of increasing/decreasing this value.</extracomment>
+        <translation type="unfinished">‫الحد الأعلى لحجم قاعدة البيانات المؤقتة (الكاش). رفع حد الكاش يزيد من سرعة المزامنة. هذا الخيار مفيد أثناء المزامنة وقد لا يفيد بعد اكتمال المزامنة في معظم الحالات. تخفيض حجم الكاش يقلل من استهلاك الذاكرة. ذاكرة تجمع الذاكرة (mempool) الغير مستخدمة مضمنة في هذا الكاش.‬</translation>
+    </message>
+    <message>
+        <source>MiB</source>
+        <translation type="unfinished">‫ميجابايت‬</translation>
+    </message>
+    <message>
+        <source>(0 = auto, &lt;0 = leave that many cores free)</source>
+        <translation type="unfinished">‫(0 = تلقائي, &lt;0 = لترك أنوية حرة بقدر الرقم السالب)‬</translation>
+    </message>
+    <message>
+        <source>Enable R&amp;PC server</source>
+        <extracomment>An Options window setting to enable the RPC server.</extracomment>
+        <translation type="unfinished">‫تفعيل خادم نداء &amp;الاجراء البعيد (RPC)‬</translation>
     </message>
     <message>
         <source>W&amp;allet</source>
-        <translation>&amp;محفظة</translation>
+        <translation type="unfinished">‫م&amp;حفظة‬</translation>
+    </message>
+    <message>
+        <source>Whether to set subtract fee from amount as default or not.</source>
+        <extracomment>Tooltip text for Options window setting that sets subtracting the fee from a sending amount as default.</extracomment>
+        <translation type="unfinished">‫تعيين خيار خصم الرسوم من القيمة كخيار افتراضي أم لا.‬</translation>
+    </message>
+    <message>
+        <source>Subtract &amp;fee from amount by default</source>
+        <extracomment>An Options window setting to set subtracting the fee from a sending amount as default.</extracomment>
+        <translation type="unfinished">‫اخصم &amp;الرسوم من القيمة بشكل افتراضي‬</translation>
     </message>
     <message>
         <source>Expert</source>
-        <translation>تصدير</translation>
+        <translation type="unfinished">‫خبير‬</translation>
+    </message>
+    <message>
+        <source>Enable coin &amp;control features</source>
+        <translation type="unfinished">‫تفعيل ميزة &amp;التحكم بوحدات البتكوين‬</translation>
+    </message>
+    <message>
+        <source>If you disable the spending of unconfirmed change, the change from a transaction cannot be used until that transaction has at least one confirmation. This also affects how your balance is computed.</source>
+        <translation type="unfinished">‫اذا قمت بتعطيل خيار الانفاق من الفكة الغير مؤكدة، لن يكون بمقدورك التحكم بتلك الفكة حتى تنْفُذ العملية وتحصل على تأكيد واحد على الأقل. هذا أيضا يؤثر على كيفية حساب رصيدك.‬</translation>
+    </message>
+    <message>
+        <source>&amp;Spend unconfirmed change</source>
+        <translation type="unfinished">‫&amp;دفع الفكة غير المؤكدة‬</translation>
+    </message>
+    <message>
+        <source>Enable &amp;PSBT controls</source>
+        <extracomment>An options window setting to enable PSBT controls.</extracomment>
+        <translation type="unfinished">‫تفعيل التحكم ب &amp;المعاملات الموقعة جزئيا‬</translation>
+    </message>
+    <message>
+        <source>External Signer (e.g. hardware wallet)</source>
+        <translation type="unfinished">‫جهاز التوقيع الخارجي (مثل المحفظة الخارجية)‬</translation>
+    </message>
+    <message>
+        <source>&amp;External signer script path</source>
+        <translation type="unfinished">&amp; مسار البرنامج النصي للموقّع الخارجي</translation>
+    </message>
+    <message>
+        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports UPnP and it is enabled.</source>
+        <translation type="unfinished">‫فتح منفذ عميل البتكوين تلقائيا على الموجه. يعمل فقط عندما يكون الموجه الخاص بك يدعم UPnP ومفعل ايضا.‬</translation>
+    </message>
+    <message>
+        <source>Map port using &amp;UPnP</source>
+        <translation type="unfinished">‫ربط المنفذ باستخدام &amp;UPnP‬</translation>
+    </message>
+    <message>
+        <source>Automatically open the Bitcoin client port on the router. This only works when your router supports NAT-PMP and it is enabled. The external port could be random.</source>
+        <translation type="unfinished">‫افتح منفذ عميل بتكوين تلقائيًا على جهاز التوجيه. يعمل هذا فقط عندما يدعم جهاز التوجيه الخاص بك NAT-PMP ويتم تمكينه. يمكن أن يكون المنفذ الخارجي عشوائيًا.‬</translation>
+    </message>
+    <message>
+        <source>Map port using NA&amp;T-PMP</source>
+        <translation type="unfinished">منفذ الخريطة باستخدام NAT-PMP</translation>
+    </message>
+    <message>
+        <source>Accept connections from outside.</source>
+        <translation type="unfinished">قبول الاتصالات من الخارج.</translation>
+    </message>
+    <message>
+        <source>Allow incomin&amp;g connections</source>
+        <translation type="unfinished">‫السماح بالاتصالات الوارد&amp;ة‬</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a SOCKS5 proxy.</source>
+        <translation type="unfinished">الاتصال بشبكة البتكوين عبر وكيل SOCKS5.</translation>
+    </message>
+    <message>
+        <source>&amp;Connect through SOCKS5 proxy (default proxy):</source>
+        <translation type="unfinished">الاتصال من خلال وكيل SOCKS5 (الوكيل الافتراضي):</translation>
     </message>
     <message>
         <source>Proxy &amp;IP:</source>
-        <translation>بروكسي &amp;اي بي:</translation>
+        <translation type="unfinished">بروكسي &amp;اي بي:</translation>
     </message>
     <message>
         <source>&amp;Port:</source>
-        <translation>&amp;المنفذ:</translation>
+        <translation type="unfinished">&amp;المنفذ:</translation>
     </message>
     <message>
         <source>Port of the proxy (e.g. 9050)</source>
-        <translation>منفذ البروكسي (مثلا 9050)</translation>
+        <translation type="unfinished">منفذ البروكسي (مثلا 9050)</translation>
+    </message>
+    <message>
+        <source>Used for reaching peers via:</source>
+        <translation type="unfinished">مستخدم للاتصال بالاقران من خلال:</translation>
+    </message>
+    <message>
+        <source>Tor</source>
+        <translation type="unfinished">تور</translation>
     </message>
     <message>
         <source>&amp;Window</source>
-        <translation>نافذه</translation>
+        <translation type="unfinished">‫&amp;نافذة‬</translation>
+    </message>
+    <message>
+        <source>Show the icon in the system tray.</source>
+        <translation type="unfinished">عرض الأيقونة في زاوية الأيقونات.</translation>
+    </message>
+    <message>
+        <source>&amp;Show tray icon</source>
+        <translation type="unfinished">‫&amp;اعرض الأيقونة في الزاوية‬</translation>
+    </message>
+    <message>
+        <source>Show only a tray icon after minimizing the window.</source>
+        <translation type="unfinished">‫عرض الأيقونة في زاوية الأيقونات فقط بعد تصغير النافذة.‬</translation>
+    </message>
+    <message>
+        <source>&amp;Minimize to the tray instead of the taskbar</source>
+        <translation type="unfinished">‫التصغير إلى زاوية الأيقونات بدلاً من شريط المهام‬</translation>
+    </message>
+    <message>
+        <source>M&amp;inimize on close</source>
+        <translation type="unfinished">‫ت&amp;صغير عند الإغلاق‬</translation>
     </message>
     <message>
         <source>&amp;Display</source>
-        <translation>&amp;عرض</translation>
+        <translation type="unfinished">&amp;عرض</translation>
     </message>
     <message>
         <source>User Interface &amp;language:</source>
-        <translation>واجهة المستخدم &amp;اللغة:</translation>
+        <translation type="unfinished">واجهة المستخدم &amp;اللغة:</translation>
+    </message>
+    <message>
+        <source>The user interface language can be set here. This setting will take effect after restarting %1.</source>
+        <translation type="unfinished">‫يمكن ضبط الواجهة اللغوية للمستخدم من هنا. هذا الإعداد يتطلب إعادة تشغيل %1.‬</translation>
+    </message>
+    <message>
+        <source>&amp;Unit to show amounts in:</source>
+        <translation type="unfinished">‫وحدة لعرض القيم:‬</translation>
+    </message>
+    <message>
+        <source>Choose the default subdivision unit to show in the interface and when sending coins.</source>
+        <translation type="unfinished">‫اختر وحدة التقسيم الفرعية الافتراضية للعرض في الواجهة وعند إرسال البتكوين.‬</translation>
+    </message>
+    <message>
+        <source>Third-party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
+        <translation type="unfinished">‫عناوين أطراف أخرى (مثل: مستكشف الطوابق) تظهر في النافذة المبوبة للعمليات كخيار في القائمة المنبثقة. %s في الرابط تُستبدل بمعرف التجزئة. سيتم فصل العناوين بخط أفقي |.‬</translation>
+    </message>
+    <message>
+        <source>&amp;Third-party transaction URLs</source>
+        <translation type="unfinished">‫&amp;عناوين عمليات أطراف أخرى‬</translation>
+    </message>
+    <message>
+        <source>Whether to show coin control features or not.</source>
+        <translation type="unfinished">‫ما اذا أردت إظهار ميزات التحكم في وحدات البتكوين أم لا.‬</translation>
+    </message>
+    <message>
+        <source>Connect to the Bitcoin network through a separate SOCKS5 proxy for Tor onion services.</source>
+        <translation type="unfinished">اتصل بشبكة بتكوين من خلال وكيل SOCKS5 منفصل لخدمات Tor onion.</translation>
+    </message>
+    <message>
+        <source>Use separate SOCKS&amp;5 proxy to reach peers via Tor onion services:</source>
+        <translation type="unfinished">استخدم بروكسي SOCKS5 منفصل للوصول إلى الأقران عبر خدمات Tor onion:</translation>
     </message>
     <message>
         <source>&amp;OK</source>
-        <translation>تم</translation>
+        <translation type="unfinished">&amp;تم</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation>الغاء</translation>
+        <translation type="unfinished">الغاء</translation>
+    </message>
+    <message>
+        <source>Compiled without external signing support (required for external signing)</source>
+        <extracomment>"External signing" means using devices such as hardware wallets.</extracomment>
+        <translation type="unfinished">مجمعة بدون دعم توقيع خارجي (مطلوب للتوقيع الخارجي)</translation>
     </message>
     <message>
         <source>default</source>
-        <translation>الافتراضي</translation>
+        <translation type="unfinished">الافتراضي</translation>
     </message>
     <message>
         <source>none</source>
-        <translation>لا شيء</translation>
+        <translation type="unfinished">لا شيء</translation>
     </message>
     <message>
         <source>Confirm options reset</source>
-        <translation>تأكيد استعادة الخيارات</translation>
+        <extracomment>Window title text of pop-up window shown when the user has chosen to reset options.</extracomment>
+        <translation type="unfinished">تأكيد استعادة الخيارات</translation>
+    </message>
+    <message>
+        <source>Client restart required to activate changes.</source>
+        <extracomment>Text explaining that the settings changed will not come into effect until the client is restarted.</extracomment>
+        <translation type="unfinished">‫يجب إعادة تشغيل العميل لتفعيل التغييرات.‬</translation>
+    </message>
+    <message>
+        <source>Current settings will be backed up at "%1".</source>
+        <extracomment>Text explaining to the user that the client's current settings will be backed up at a specific location. %1 is a stand-in argument for the backup location's path.</extracomment>
+        <translation type="unfinished">‫سيتم النسخ الاحتياطي للاعدادات على “%1”.‬".</translation>
+    </message>
+    <message>
+        <source>Client will be shut down. Do you want to proceed?</source>
+        <extracomment>Text asking the user to confirm if they would like to proceed with a client shutdown.</extracomment>
+        <translation type="unfinished">‫سوف يتم إيقاف العميل تماماً. هل تريد الإستمرار؟‬</translation>
+    </message>
+    <message>
+        <source>Configuration options</source>
+        <extracomment>Window title text of pop-up box that allows opening up of configuration file.</extracomment>
+        <translation type="unfinished">‫خيارات الإعداد‬</translation>
+    </message>
+    <message>
+        <source>The configuration file is used to specify advanced user options which override GUI settings. Additionally, any command-line options will override this configuration file.</source>
+        <extracomment>Explanatory text about the priority order of instructions considered by client. The order from high to low being: command-line, configuration file, GUI settings.</extracomment>
+        <translation type="unfinished">‫يتم استخدام ملف الإعداد لتحديد خيارات المستخدم المتقدمة التي تتجاوز إعدادات واجهة المستخدم الرسومية. بالإضافة إلى ذلك ، ستتجاوز خيارات سطر الأوامر ملف الإعداد هذا.‬</translation>
+    </message>
+    <message>
+        <source>Continue</source>
+        <translation type="unfinished">‫استمرار‬</translation>
+    </message>
+    <message>
+        <source>Cancel</source>
+        <translation type="unfinished">إلغاء</translation>
+    </message>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">خطأ</translation>
+    </message>
+    <message>
+        <source>The configuration file could not be opened.</source>
+        <translation type="unfinished">‫لم تتمكن من فتح ملف الإعداد.‬</translation>
+    </message>
+    <message>
+        <source>This change would require a client restart.</source>
+        <translation type="unfinished">هذا التغيير يتطلب إعادة تشغيل العميل بشكل كامل.</translation>
     </message>
     <message>
         <source>The supplied proxy address is invalid.</source>
-        <translation>عنوان الوكيل توفيره غير صالح.</translation>
+        <translation type="unfinished">‫عنوان الوكيل الذي تم ادخاله غير صالح.‬</translation>
+    </message>
+</context>
+<context>
+    <name>OptionsModel</name>
+    <message>
+        <source>Could not read setting "%1", %2.</source>
+        <translation type="unfinished">‫لا يمكن قراءة الاعدادات “%1”, %2.‬</translation>
     </message>
 </context>
 <context>
     <name>OverviewPage</name>
     <message>
         <source>Form</source>
-        <translation>نمودج</translation>
+        <translation type="unfinished">نمودج</translation>
     </message>
     <message>
-        <source>Wallet</source>
-        <translation>محفظة</translation>
+        <source>The displayed information may be out of date. Your wallet automatically synchronizes with the Bitcoin network after a connection is established, but this process has not completed yet.</source>
+        <translation type="unfinished">قد تكون المعلومات المعروضة قديمة. تتزامن محفظتك تلقائيًا مع شبكة البتكوين بعد إنشاء الاتصال، ولكن هذه العملية لم تكتمل بعد.</translation>
+    </message>
+    <message>
+        <source>Watch-only:</source>
+        <translation type="unfinished">‫مراقبة فقط:‬</translation>
     </message>
     <message>
         <source>Available:</source>
-        <translation>متوفر</translation>
+        <translation type="unfinished">‫متاح:‬</translation>
+    </message>
+    <message>
+        <source>Your current spendable balance</source>
+        <translation type="unfinished">‫الرصيد المتاح للصرف‬</translation>
     </message>
     <message>
         <source>Pending:</source>
-        <translation>معلق:</translation>
+        <translation type="unfinished">معلق:</translation>
+    </message>
+    <message>
+        <source>Total of transactions that have yet to be confirmed, and do not yet count toward the spendable balance</source>
+        <translation type="unfinished">إجمالي المعاملات التي لم يتم تأكيدها بعد ولا تحتسب ضمن الرصيد القابل للانفاق</translation>
     </message>
     <message>
         <source>Immature:</source>
-        <translation>غير ناضجة</translation>
+        <translation type="unfinished">‫غير ناضج:‬</translation>
+    </message>
+    <message>
+        <source>Mined balance that has not yet matured</source>
+        <translation type="unfinished">الرصيد المعدّن الذي لم ينضج بعد</translation>
+    </message>
+    <message>
+        <source>Balances</source>
+        <translation type="unfinished">الأرصدة</translation>
     </message>
     <message>
         <source>Total:</source>
-        <translation>المجموع:</translation>
+        <translation type="unfinished">المجموع:</translation>
     </message>
     <message>
         <source>Your current total balance</source>
-        <translation>رصيدك الكلي الحالي</translation>
+        <translation type="unfinished">رصيدك الكلي الحالي</translation>
     </message>
     <message>
-        <source>&lt;b&gt;Recent transactions&lt;/b&gt;</source>
-        <translation>اخر المعملات </translation>
+        <source>Your current balance in watch-only addresses</source>
+        <translation type="unfinished">‫رصيد عناوين المراقبة‬</translation>
     </message>
     <message>
-        <source>out of sync</source>
-        <translation>خارج المزامنه</translation>
+        <source>Spendable:</source>
+        <translation type="unfinished">قابل للصرف:</translation>
+    </message>
+    <message>
+        <source>Recent transactions</source>
+        <translation type="unfinished">العمليات الأخيرة</translation>
+    </message>
+    <message>
+        <source>Unconfirmed transactions to watch-only addresses</source>
+        <translation type="unfinished">‫عمليات غير مؤكدة لعناوين المراقبة‬</translation>
+    </message>
+    <message>
+        <source>Mined balance in watch-only addresses that has not yet matured</source>
+        <translation type="unfinished">‫الرصيد المعدّن في عناوين المراقبة الذي لم ينضج بعد‬</translation>
+    </message>
+    <message>
+        <source>Current total balance in watch-only addresses</source>
+        <translation type="unfinished">‫الرصيد الإجمالي الحالي في عناوين المراقبة‬</translation>
+    </message>
+    <message>
+        <source>Privacy mode activated for the Overview tab. To unmask the values, uncheck Settings-&gt;Mask values.</source>
+        <translation type="unfinished">تم تنشيط وضع الخصوصية لعلامة التبويب "نظرة عامة". للكشف عن القيم ، قم بإلغاء تحديد الإعدادات-&gt; إخفاء القيم.</translation>
+    </message>
+</context>
+<context>
+    <name>PSBTOperationsDialog</name>
+    <message>
+        <source>Sign Tx</source>
+        <translation type="unfinished">‫توقيع العملية‬</translation>
+    </message>
+    <message>
+        <source>Broadcast Tx</source>
+        <translation type="unfinished">‫بث العملية‬</translation>
+    </message>
+    <message>
+        <source>Copy to Clipboard</source>
+        <translation type="unfinished">نسخ إلى الحافظة</translation>
+    </message>
+    <message>
+        <source>Save…</source>
+        <translation type="unfinished">‫حفظ…‬</translation>
+    </message>
+    <message>
+        <source>Close</source>
+        <translation type="unfinished">إغلاق</translation>
+    </message>
+    <message>
+        <source>Failed to load transaction: %1</source>
+        <translation type="unfinished">‫فشل تحميل العملية: %1‬</translation>
+    </message>
+    <message>
+        <source>Failed to sign transaction: %1</source>
+        <translation type="unfinished">فشل توقيع المعاملة: %1</translation>
+    </message>
+    <message>
+        <source>Cannot sign inputs while wallet is locked.</source>
+        <translation type="unfinished">‫لا يمكن توقيع المدخلات والمحفظة مقفلة.‬</translation>
+    </message>
+    <message>
+        <source>Could not sign any more inputs.</source>
+        <translation type="unfinished">تعذر توقيع المزيد من المدخلات.</translation>
+    </message>
+    <message>
+        <source>Signed %1 inputs, but more signatures are still required.</source>
+        <translation type="unfinished">‫تم توقيع %1 مدخلات، مطلوب توقيعات اضافية.‬</translation>
+    </message>
+    <message>
+        <source>Signed transaction successfully. Transaction is ready to broadcast.</source>
+        <translation type="unfinished">‫تم توقيع المعاملة بنجاح. العملية جاهزة للبث.‬</translation>
+    </message>
+    <message>
+        <source>Unknown error processing transaction.</source>
+        <translation type="unfinished">‫خطأ غير معروف في معالجة العملية.‬</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast successfully! Transaction ID: %1</source>
+        <translation type="unfinished">‫تم بث العملية بنجاح! معرّف العملية: %1‬</translation>
+    </message>
+    <message>
+        <source>Transaction broadcast failed: %1</source>
+        <translation type="unfinished">‫فشل بث العملية: %1‬</translation>
+    </message>
+    <message>
+        <source>PSBT copied to clipboard.</source>
+        <translation type="unfinished">‫نسخ المعاملة الموقعة جزئيا إلى الحافظة.‬</translation>
+    </message>
+    <message>
+        <source>Save Transaction Data</source>
+        <translation type="unfinished">حفظ بيانات العملية</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary)</source>
+        <extracomment>Expanded name of the binary PSBT file format. See: BIP 174.</extracomment>
+        <translation type="unfinished">معاملة موقعة جزئيًا (ثنائي)</translation>
+    </message>
+    <message>
+        <source>PSBT saved to disk.</source>
+        <translation type="unfinished">‫تم حفظ المعاملة الموقعة جزئيا على وحدة التخزين.‬</translation>
+    </message>
+    <message>
+        <source>own address</source>
+        <translation type="unfinished">عنوانه</translation>
+    </message>
+    <message>
+        <source>Unable to calculate transaction fee or total transaction amount.</source>
+        <translation type="unfinished">‫غير قادر على حساب رسوم العملية أو إجمالي قيمة العملية.‬</translation>
+    </message>
+    <message>
+        <source>Pays transaction fee: </source>
+        <translation type="unfinished">‫دفع رسوم العملية: ‬</translation>
+    </message>
+    <message>
+        <source>Total Amount</source>
+        <translation type="unfinished">القيمة الإجمالية</translation>
+    </message>
+    <message>
+        <source>or</source>
+        <translation type="unfinished">أو</translation>
+    </message>
+    <message>
+        <source>Transaction has %1 unsigned inputs.</source>
+        <translation type="unfinished">‫المعاملة تحتوي على %1 من المدخلات غير موقعة.‬</translation>
+    </message>
+    <message>
+        <source>Transaction is missing some information about inputs.</source>
+        <translation type="unfinished">تفتقد المعاملة إلى بعض المعلومات حول المدخلات </translation>
+    </message>
+    <message>
+        <source>Transaction still needs signature(s).</source>
+        <translation type="unfinished">المعاملة ما زالت تحتاج التوقيع.</translation>
+    </message>
+    <message>
+        <source>(But no wallet is loaded.)</source>
+        <translation type="unfinished">‫(لكن لم يتم تحميل محفظة.)‬</translation>
+    </message>
+    <message>
+        <source>(But this wallet cannot sign transactions.)</source>
+        <translation type="unfinished">‫(لكن لا يمكن توقيع العمليات بهذه المحفظة.)‬</translation>
+    </message>
+    <message>
+        <source>(But this wallet does not have the right keys.)</source>
+        <translation type="unfinished">‫(لكن هذه المحفظة لا تحتوي على المفاتيح الصحيحة.)‬</translation>
+    </message>
+    <message>
+        <source>Transaction is fully signed and ready for broadcast.</source>
+        <translation type="unfinished">‫المعاملة موقعة بالكامل وجاهزة للبث.‬</translation>
+    </message>
+    <message>
+        <source>Transaction status is unknown.</source>
+        <translation type="unfinished">‫حالة العملية غير معروفة.‬</translation>
     </message>
 </context>
 <context>
     <name>PaymentServer</name>
-    </context>
+    <message>
+        <source>Payment request error</source>
+        <translation type="unfinished">خطأ في طلب الدفع</translation>
+    </message>
+    <message>
+        <source>Cannot start bitcoin: click-to-pay handler</source>
+        <translation type="unfinished">لا يمكن تشغيل بتكوين: معالج النقر للدفع</translation>
+    </message>
+    <message>
+        <source>URI handling</source>
+        <translation type="unfinished">التعامل مع العنوان</translation>
+    </message>
+    <message>
+        <source>'bitcoin://' is not a valid URI. Use 'bitcoin:' instead.</source>
+        <translation type="unfinished">'bitcoin://' هو ليس عنوان URL صالح. استعمل 'bitcoin:' بدلا من ذلك.</translation>
+    </message>
+    <message>
+        <source>Cannot process payment request because BIP70 is not supported.
+Due to widespread security flaws in BIP70 it's strongly recommended that any merchant instructions to switch wallets be ignored.
+If you are receiving this error you should request the merchant provide a BIP21 compatible URI.</source>
+        <translation type="unfinished">‫لا يمكن معالجة طلب الدفع لأن BIP70 غير مدعوم.
+‬‫‫‫نظرًا لوجود عيوب أمنية كبيرة في ‫BIP70 يوصى بشدة بتجاهل أي تعليمات من المستلمين لتبديل المحافظ.
+‬‫‫‫إذا كنت تتلقى هذا الخطأ ، يجب أن تطلب من المستلم تقديم عنوان URI متوافق مع BIP21.‬</translation>
+    </message>
+    <message>
+        <source>URI cannot be parsed! This can be caused by an invalid Bitcoin address or malformed URI parameters.</source>
+        <translation type="unfinished">‫لا يمكن تحليل العنوان (URI)! يمكن أن يحدث هذا بسبب عنوان بتكوين غير صالح أو محددات عنوان غير صحيحة.‬</translation>
+    </message>
+    <message>
+        <source>Payment request file handling</source>
+        <translation type="unfinished">التعامل مع ملف طلب الدفع</translation>
+    </message>
+</context>
 <context>
     <name>PeerTableModel</name>
-    </context>
-<context>
-    <name>QObject</name>
     <message>
-        <source>Amount</source>
-        <translation>المبلغ</translation>
+        <source>User Agent</source>
+        <extracomment>Title of Peers Table column which contains the peer's User Agent string.</extracomment>
+        <translation type="unfinished">وكيل المستخدم</translation>
     </message>
     <message>
-        <source>UNKNOWN</source>
-        <translation>غير معروف</translation>
+        <source>Ping</source>
+        <extracomment>Title of Peers Table column which indicates the current latency of the connection with the peer.</extracomment>
+        <translation type="unfinished">رنين</translation>
     </message>
     <message>
-        <source>N/A</source>
-        <translation>غير معروف</translation>
-    </message>
-    </context>
-<context>
-    <name>QRImageWidget</name>
-    <message>
-        <source>&amp;Save Image...</source>
-        <translation>&amp;حفظ الصورة</translation>
+        <source>Peer</source>
+        <extracomment>Title of Peers Table column which contains a unique number used to identify a connection.</extracomment>
+        <translation type="unfinished">الأقران</translation>
     </message>
     <message>
-        <source>&amp;Copy Image</source>
-        <translation>&amp;نسخ الصورة</translation>
+        <source>Age</source>
+        <extracomment>Title of Peers Table column which indicates the duration (length of time) since the peer connection started.</extracomment>
+        <translation type="unfinished">العمر</translation>
     </message>
     <message>
-        <source>Save QR Code</source>
-        <translation>حفظ رمز الاستجابة السريعة QR</translation>
+        <source>Direction</source>
+        <extracomment>Title of Peers Table column which indicates the direction the peer connection was initiated from.</extracomment>
+        <translation type="unfinished">جهة</translation>
     </message>
     <message>
-        <source>PNG Image (*.png)</source>
-        <translation>صورة PNG (*.png)</translation>
+        <source>Sent</source>
+        <extracomment>Title of Peers Table column which indicates the total amount of network information we have sent to the peer.</extracomment>
+        <translation type="unfinished">تم الإرسال</translation>
+    </message>
+    <message>
+        <source>Received</source>
+        <extracomment>Title of Peers Table column which indicates the total amount of network information we have received from the peer.</extracomment>
+        <translation type="unfinished">‫مستلم‬</translation>
+    </message>
+    <message>
+        <source>Address</source>
+        <extracomment>Title of Peers Table column which contains the IP/Onion/I2P address of the connected peer.</extracomment>
+        <translation type="unfinished">العنوان</translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <extracomment>Title of Peers Table column which describes the type of peer connection. The "type" describes why the connection exists.</extracomment>
+        <translation type="unfinished">النوع</translation>
+    </message>
+    <message>
+        <source>Network</source>
+        <extracomment>Title of Peers Table column which states the network the peer connected through.</extracomment>
+        <translation type="unfinished">الشبكة</translation>
+    </message>
+    <message>
+        <source>Inbound</source>
+        <extracomment>An Inbound Connection from a Peer.</extracomment>
+        <translation type="unfinished">‫وارد‬</translation>
+    </message>
+    <message>
+        <source>Outbound</source>
+        <extracomment>An Outbound Connection to a Peer.</extracomment>
+        <translation type="unfinished">‫صادر‬</translation>
     </message>
 </context>
 <context>
     <name>RPCConsole</name>
     <message>
-        <source>Client name</source>
-        <translation>اسم العميل</translation>
-    </message>
-    <message>
-        <source>N/A</source>
-        <translation>غير معروف</translation>
-    </message>
-    <message>
-        <source>Client version</source>
-        <translation>نسخه العميل</translation>
-    </message>
-    <message>
-        <source>&amp;Information</source>
-        <translation>المعلومات</translation>
-    </message>
-    <message>
-        <source>General</source>
-        <translation>عام</translation>
-    </message>
-    <message>
-        <source>Startup time</source>
-        <translation>وقت البدء</translation>
-    </message>
-    <message>
-        <source>Network</source>
-        <translation>الشبكه</translation>
-    </message>
-    <message>
-        <source>Name</source>
-        <translation>الاسم</translation>
-    </message>
-    <message>
-        <source>Number of connections</source>
-        <translation>عدد الاتصالات</translation>
-    </message>
-    <message>
-        <source>Received</source>
-        <translation>إستقبل</translation>
-    </message>
-    <message>
         <source>Sent</source>
-        <translation>تم الإرسال</translation>
+        <translation type="unfinished">تم الإرسال</translation>
     </message>
     <message>
-        <source>Direction</source>
-        <translation>جهة</translation>
+        <source>Node window</source>
+        <translation type="unfinished">‫نافذة النود‬</translation>
     </message>
-    <message>
-        <source>Services</source>
-        <translation>خدمات</translation>
-    </message>
-    <message>
-        <source>Last Send</source>
-        <translation>آخر استقبال</translation>
-    </message>
-    <message>
-        <source>Last Receive</source>
-        <translation>آخر إرسال</translation>
-    </message>
-    <message>
-        <source>&amp;Open</source>
-        <translation>الفتح</translation>
-    </message>
-    <message>
-        <source>&amp;Network Traffic</source>
-        <translation>&amp;حركة مرور الشبكة</translation>
-    </message>
-    <message>
-        <source>&amp;Clear</source>
-        <translation>&amp;مسح</translation>
-    </message>
-    <message>
-        <source>Totals</source>
-        <translation>المجاميع</translation>
-    </message>
-    <message>
-        <source>In:</source>
-        <translation>داخل:</translation>
-    </message>
-    <message>
-        <source>Out:</source>
-        <translation>خارج:</translation>
-    </message>
-    <message>
-        <source>Build date</source>
-        <translation>وقت البناء</translation>
-    </message>
-    <message>
-        <source>Use up and down arrows to navigate history, and &lt;b&gt;Ctrl-L&lt;/b&gt; to clear screen.</source>
-        <translation>استخدم اسهم الاعلى و الاسفل للتنقل بين السجلات و &lt;b&gt;Ctrl-L&lt;/b&gt;  لمسح الشاشة</translation>
-    </message>
-    <message>
-        <source>Yes</source>
-        <translation>نعم</translation>
-    </message>
-    <message>
-        <source>No</source>
-        <translation>لا</translation>
-    </message>
-    <message>
-        <source>Unknown</source>
-        <translation>غير معرف</translation>
-    </message>
-    <message>
-        <source>Fetching...</source>
-        <translation>جاري الجلب...</translation>
-    </message>
-</context>
-<context>
-    <name>ReceiveCoinsDialog</name>
-    <message>
-        <source>&amp;Amount:</source>
-        <translation>&amp;القيمة</translation>
-    </message>
-    <message>
-        <source>&amp;Label:</source>
-        <translation>&amp;الوصف:</translation>
-    </message>
-    <message>
-        <source>&amp;Message:</source>
-        <translation>&amp;رسالة:</translation>
-    </message>
-    <message>
-        <source>Clear all fields of the form.</source>
-        <translation>مسح كل حقول النموذج المطلوبة</translation>
-    </message>
-    <message>
-        <source>Clear</source>
-        <translation>مسح</translation>
-    </message>
-    <message>
-        <source>Requested payments history</source>
-        <translation>سجل طلبات الدفع</translation>
-    </message>
-    <message>
-        <source>Show</source>
-        <translation>عرض</translation>
-    </message>
-    <message>
-        <source>Remove</source>
-        <translation>ازل</translation>
-    </message>
-    <message>
-        <source>Copy label</source>
-        <translation> انسخ التسمية</translation>
-    </message>
-    <message>
-        <source>Copy message</source>
-        <translation>انسخ الرسالة</translation>
-    </message>
-    <message>
-        <source>Copy amount</source>
-        <translation>نسخ القيمة</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>ReceiveRequestDialog</name>
     <message>
-        <source>QR Code</source>
-        <translation>رمز كيو ار</translation>
-    </message>
-    <message>
-        <source>Copy &amp;URI</source>
-        <translation>نسخ  &amp;URI</translation>
-    </message>
-    <message>
-        <source>Copy &amp;Address</source>
-        <translation>نسخ &amp;العنوان</translation>
-    </message>
-    <message>
-        <source>&amp;Save Image...</source>
-        <translation>&amp;حفظ الصورة</translation>
-    </message>
-    <message>
-        <source>Payment information</source>
-        <translation>معلومات الدفع</translation>
-    </message>
-    <message>
-        <source>URI</source>
-        <translation> URI</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>عنوان</translation>
-    </message>
-    <message>
-        <source>Amount</source>
-        <translation>المبلغ</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>وصف</translation>
-    </message>
-    <message>
-        <source>Message</source>
-        <translation>رسالة</translation>
+        <source>Wallet:</source>
+        <translation type="unfinished">المحفظة:</translation>
     </message>
     </context>
 <context>
     <name>RecentRequestsTableModel</name>
     <message>
-        <source>Date</source>
-        <translation>التاريخ</translation>
-    </message>
-    <message>
-        <source>Label</source>
-        <translation>وصف</translation>
-    </message>
-    <message>
-        <source>Message</source>
-        <translation>رسالة</translation>
-    </message>
-    <message>
-        <source>Amount</source>
-        <translation>المبلغ</translation>
-    </message>
-    <message>
         <source>(no label)</source>
-        <translation>(لا وصف)</translation>
-    </message>
-    <message>
-        <source>(no message)</source>
-        <translation>( لا رسائل )</translation>
+        <translation type="unfinished">(بدون وسم)</translation>
     </message>
     </context>
 <context>
     <name>SendCoinsDialog</name>
     <message>
-        <source>Send Coins</source>
-        <translation>إرسال Coins</translation>
-    </message>
-    <message>
-        <source>automatically selected</source>
-        <translation>اختيار تلقائيا</translation>
-    </message>
-    <message>
-        <source>Insufficient funds!</source>
-        <translation>الرصيد غير كافي!</translation>
-    </message>
-    <message>
-        <source>Quantity:</source>
-        <translation>الكمية :</translation>
-    </message>
-    <message>
-        <source>Amount:</source>
-        <translation>القيمة :</translation>
-    </message>
-    <message>
-        <source>Priority:</source>
-        <translation>افضلية :</translation>
-    </message>
-    <message>
-        <source>Fee:</source>
-        <translation>رسوم :</translation>
-    </message>
-    <message>
-        <source>After Fee:</source>
-        <translation>بعد الرسوم :</translation>
-    </message>
-    <message>
-        <source>Change:</source>
-        <translation>تعديل :</translation>
-    </message>
-    <message>
-        <source>Send to multiple recipients at once</source>
-        <translation>إرسال إلى عدة مستلمين في وقت واحد</translation>
-    </message>
-    <message>
-        <source>Add &amp;Recipient</source>
-        <translation>أضافة &amp;مستلم</translation>
-    </message>
-    <message>
-        <source>Clear all fields of the form.</source>
-        <translation>مسح كل حقول النموذج المطلوبة</translation>
-    </message>
-    <message>
-        <source>Clear &amp;All</source>
-        <translation>مسح الكل</translation>
-    </message>
-    <message>
-        <source>Balance:</source>
-        <translation>الرصيد:</translation>
-    </message>
-    <message>
-        <source>Confirm the send action</source>
-        <translation>تأكيد الإرسال</translation>
-    </message>
-    <message>
-        <source>S&amp;end</source>
-        <translation>&amp;ارسال</translation>
-    </message>
-    <message>
-        <source>Confirm send coins</source>
-        <translation>تأكيد الإرسال Coins</translation>
-    </message>
-    <message>
         <source>Copy quantity</source>
-        <translation>نسخ الكمية </translation>
-    </message>
-    <message>
-        <source>Copy amount</source>
-        <translation>نسخ القيمة</translation>
-    </message>
-    <message>
-        <source>Copy fee</source>
-        <translation>نسخ الرسوم</translation>
+        <translation type="unfinished">نسخ الكمية </translation>
     </message>
     <message>
         <source>Copy after fee</source>
-        <translation>نسخ بعد الرسوم</translation>
-    </message>
-    <message>
-        <source>Copy priority</source>
-        <translation>نسخ الافضلية</translation>
+        <translation type="unfinished">نسخ بعد الرسوم</translation>
     </message>
     <message>
         <source>Copy change</source>
-        <translation>نسخ التعديل</translation>
+        <translation type="unfinished">‫نسخ الفكة‬</translation>
     </message>
     <message>
-        <source>Total Amount %1 (= %2)</source>
-        <translation>مجموع المبلغ %1 (= %2)</translation>
+        <source>Creates a Partially Signed Bitcoin Transaction (PSBT) for use with e.g. an offline %1 wallet, or a PSBT-compatible hardware wallet.</source>
+        <translation type="unfinished">‫أنشئ معاملة بتكوين موقعة جزئيا (PSBT) للاستعمال مع محفظة %1 غير متصلة بالشبكة مثلا، أو محفظة خارجية متوافقة مع الـ(PSBT).‬</translation>
+    </message>
+    <message>
+        <source>Partially Signed Transaction (Binary)</source>
+        <extracomment>Expanded name of the binary PSBT file format. See: BIP 174.</extracomment>
+        <translation type="unfinished">معاملة موقعة جزئيًا (ثنائي)</translation>
     </message>
     <message>
         <source>or</source>
-        <translation>أو</translation>
+        <translation type="unfinished">أو</translation>
     </message>
-    <message>
-        <source>The amount to pay must be larger than 0.</source>
-        <translation>المبلغ المدفوع يجب ان يكون اكبر من 0</translation>
-    </message>
-    <message>
-        <source>The amount exceeds your balance.</source>
-        <translation>القيمة تتجاوز رصيدك</translation>
+    <message numerus="yes">
+        <source>Estimated to begin confirmation within %n block(s).</source>
+        <translation type="unfinished">
+            <numerusform>Estimated to begin confirmation within %n block(s).</numerusform>
+            <numerusform>Estimated to begin confirmation within %n block(s).</numerusform>
+            <numerusform>Estimated to begin confirmation within %n block(s).</numerusform>
+            <numerusform>Estimated to begin confirmation within %n block(s).</numerusform>
+            <numerusform>Estimated to begin confirmation within %n block(s).</numerusform>
+            <numerusform>Estimated to begin confirmation within %n block(s).</numerusform>
+        </translation>
     </message>
     <message>
         <source>(no label)</source>
-        <translation>(لا وصف)</translation>
-    </message>
-    </context>
-<context>
-    <name>SendCoinsEntry</name>
-    <message>
-        <source>Pay &amp;To:</source>
-        <translation>ادفع &amp;الى :</translation>
-    </message>
-    <message>
-        <source>Enter a label for this address to add it to your address book</source>
-        <translation>إدخال تسمية لهذا العنوان لإضافته إلى دفتر العناوين الخاص بك</translation>
-    </message>
-    <message>
-        <source>&amp;Label:</source>
-        <translation>&amp;وصف :</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <source>Paste address from clipboard</source>
-        <translation>الصق العنوان من لوحة المفاتيح</translation>
-    </message>
-    <message>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <source>Message:</source>
-        <translation>الرسائل</translation>
-    </message>
-    </context>
-<context>
-    <name>ShutdownWindow</name>
-    <message>
-        <source>Do not shut down the computer until this window disappears.</source>
-        <translation>لا توقف عمل الكمبيوتر حتى تختفي هذه النافذة</translation>
+        <translation type="unfinished">(بدون وسم)</translation>
     </message>
 </context>
-<context>
-    <name>SignVerifyMessageDialog</name>
-    <message>
-        <source>&amp;Sign Message</source>
-        <translation>&amp;توقيع الرسالة</translation>
-    </message>
-    <message>
-        <source>Alt+A</source>
-        <translation>Alt+A</translation>
-    </message>
-    <message>
-        <source>Paste address from clipboard</source>
-        <translation>انسخ العنوان من لوحة المفاتيح</translation>
-    </message>
-    <message>
-        <source>Alt+P</source>
-        <translation>Alt+P</translation>
-    </message>
-    <message>
-        <source>Enter the message you want to sign here</source>
-        <translation>ادخل الرسالة التي تريد توقيعها هنا</translation>
-    </message>
-    <message>
-        <source>Signature</source>
-        <translation>التوقيع</translation>
-    </message>
-    <message>
-        <source>Sign the message to prove you own this Bitcoin address</source>
-        <translation>وقع الرسالة لتثبت انك تمتلك عنوان البت كوين هذا</translation>
-    </message>
-    <message>
-        <source>Sign &amp;Message</source>
-        <translation>توقيع $الرسالة</translation>
-    </message>
-    <message>
-        <source>Clear &amp;All</source>
-        <translation>مسح الكل</translation>
-    </message>
-    <message>
-        <source>&amp;Verify Message</source>
-        <translation>&amp;تحقق رسالة</translation>
-    </message>
-    <message>
-        <source>Verify &amp;Message</source>
-        <translation>تحقق &amp;الرسالة</translation>
-    </message>
-    <message>
-        <source>Click "Sign Message" to generate signature</source>
-        <translation>اضغط  "توقيع الرسالة" لتوليد التوقيع</translation>
-    </message>
-    <message>
-        <source>The entered address is invalid.</source>
-        <translation>العنوان المدخل غير صالح</translation>
-    </message>
-    <message>
-        <source>Please check the address and try again.</source>
-        <translation>الرجاء التأكد من العنوان والمحاولة مرة اخرى</translation>
-    </message>
-    <message>
-        <source>The entered address does not refer to a key.</source>
-        <translation>العنوان المدخل لا يشير الى مفتاح</translation>
-    </message>
-    <message>
-        <source>Wallet unlock was cancelled.</source>
-        <translation>تم الغاء عملية فتح المحفظة</translation>
-    </message>
-    <message>
-        <source>Private key for the entered address is not available.</source>
-        <translation>المفتاح الخاص للعنوان المدخل غير موجود.</translation>
-    </message>
-    <message>
-        <source>Message signing failed.</source>
-        <translation>فشل توقيع الرسالة.</translation>
-    </message>
-    <message>
-        <source>Message signed.</source>
-        <translation>الرسالة موقعة.</translation>
-    </message>
-    <message>
-        <source>Please check the signature and try again.</source>
-        <translation>فضلا تاكد من التوقيع وحاول مرة اخرى</translation>
-    </message>
-    <message>
-        <source>Message verification failed.</source>
-        <translation>فشلت عملية التأكد من الرسالة.</translation>
-    </message>
-    <message>
-        <source>Message verified.</source>
-        <translation>تم تأكيد الرسالة.</translation>
-    </message>
-</context>
-<context>
-    <name>SplashScreen</name>
-    <message>
-        <source>Bitcoin Core</source>
-        <translation>جوهر البيت كوين</translation>
-    </message>
-    <message>
-        <source>The Bitcoin Core developers</source>
-        <translation>مطوري جوهر البيت كوين</translation>
-    </message>
-    <message>
-        <source>[testnet]</source>
-        <translation>[testnet]</translation>
-    </message>
-</context>
-<context>
-    <name>TrafficGraphWidget</name>
-    </context>
 <context>
     <name>TransactionDesc</name>
-    <message>
-        <source>conflicted</source>
-        <translation>يتعارض</translation>
+    <message numerus="yes">
+        <source>matures in %n more block(s)</source>
+        <translation type="unfinished">
+            <numerusform>matures in %n more block(s)</numerusform>
+            <numerusform>matures in %n more block(s)</numerusform>
+            <numerusform>matures in %n more block(s)</numerusform>
+            <numerusform>matures in %n more block(s)</numerusform>
+            <numerusform>matures in %n more block(s)</numerusform>
+            <numerusform>matures in %n more block(s)</numerusform>
+        </translation>
     </message>
     <message>
-        <source>%1 confirmations</source>
-        <translation>تأكيد %1</translation>
-    </message>
-    <message>
-        <source>Status</source>
-        <translation>الحالة.</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation>التاريخ</translation>
-    </message>
-    <message>
-        <source>Source</source>
-        <translation>المصدر</translation>
-    </message>
-    <message>
-        <source>Generated</source>
-        <translation>تم اصداره.</translation>
-    </message>
-    <message>
-        <source>From</source>
-        <translation>من</translation>
-    </message>
-    <message>
-        <source>To</source>
-        <translation>الى</translation>
-    </message>
-    <message>
-        <source>own address</source>
-        <translation>عنوانه</translation>
-    </message>
-    <message>
-        <source>label</source>
-        <translation>علامة</translation>
-    </message>
-    <message>
-        <source>not accepted</source>
-        <translation>غير مقبولة</translation>
-    </message>
-    <message>
-        <source>Debit</source>
-        <translation>دين</translation>
-    </message>
-    <message>
-        <source>Transaction fee</source>
-        <translation>رسوم المعاملة</translation>
-    </message>
-    <message>
-        <source>Message</source>
-        <translation>رسالة </translation>
-    </message>
-    <message>
-        <source>Comment</source>
-        <translation>تعليق</translation>
-    </message>
-    <message>
-        <source>Transaction ID</source>
-        <translation>رقم المعاملة</translation>
-    </message>
-    <message>
-        <source>Merchant</source>
-        <translation>تاجر</translation>
-    </message>
-    <message>
-        <source>Transaction</source>
-        <translation>معاملة</translation>
+        <source>Generated coins must mature %1 blocks before they can be spent. When you generated this block, it was broadcast to the network to be added to the block chain. If it fails to get into the chain, its state will change to "not accepted" and it won't be spendable. This may occasionally happen if another node generates a block within a few seconds of yours.</source>
+        <translation type="unfinished">النقود المولدة يجب أن تنضج %1 من الكتل قبل أن يكون بالإمكان إنفاقهم. عندما تولد أنت هذه الكتلة، تكون قد بثت الى الشبكة ليتم اضافتها لسلسلة الكتل. اذا فشلت في الدخول الى السلسلة، حالتها سوف تتغير الى "غير مقبولة" ولن تكون قابلة للإنفاق. هذا قد يحدث أحيانا اذا قامت عقدة أخرى بتوليد كتلة خلال ثوان معدودة من قيامك بنفس العملية.</translation>
     </message>
     <message>
         <source>Amount</source>
-        <translation>المبلغ</translation>
+        <translation type="unfinished">‫القيمة‬</translation>
     </message>
-    <message>
-        <source>true</source>
-        <translation>صحيح</translation>
-    </message>
-    <message>
-        <source>false</source>
-        <translation>خاطئ</translation>
-    </message>
-    <message>
-        <source>, has not been successfully broadcast yet</source>
-        <translation>,  لم يتم حتى الآن البث بنجاح</translation>
-    </message>
-    <message>
-        <source>unknown</source>
-        <translation>غير معروف</translation>
-    </message>
-</context>
-<context>
-    <name>TransactionDescDialog</name>
-    <message>
-        <source>Transaction details</source>
-        <translation>تفاصيل المعاملة</translation>
-    </message>
-    <message>
-        <source>This pane shows a detailed description of the transaction</source>
-        <translation>يبين هذا الجزء وصفا مفصلا لهده المعاملة</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>TransactionTableModel</name>
     <message>
-        <source>Date</source>
-        <translation>التاريخ</translation>
-    </message>
-    <message>
         <source>Type</source>
-        <translation>النوع</translation>
+        <translation type="unfinished">النوع</translation>
     </message>
     <message>
-        <source>Address</source>
-        <translation>عنوان</translation>
+        <source>(no label)</source>
+        <translation type="unfinished">(بدون وسم)</translation>
     </message>
-    <message>
-        <source>This block was not received by any other nodes and will probably not be accepted!</source>
-        <translation>لم يتم تلقى هذه الكتلة (Block) من قبل أي العقد الأخرى وربما لن تكون مقبولة!</translation>
-    </message>
-    <message>
-        <source>Generated but not accepted</source>
-        <translation>ولدت ولكن لم تقبل</translation>
-    </message>
-    <message>
-        <source>Offline</source>
-        <translation>غير متصل</translation>
-    </message>
-    <message>
-        <source>Received with</source>
-        <translation>استقبل مع</translation>
-    </message>
-    <message>
-        <source>Received from</source>
-        <translation>استقبل من</translation>
-    </message>
-    <message>
-        <source>Sent to</source>
-        <translation>أرسل إلى</translation>
-    </message>
-    <message>
-        <source>Payment to yourself</source>
-        <translation>دفع لنفسك</translation>
-    </message>
-    <message>
-        <source>Mined</source>
-        <translation>Mined</translation>
-    </message>
-    <message>
-        <source>(n/a)</source>
-        <translation>غير متوفر</translation>
-    </message>
-    <message>
-        <source>Transaction status. Hover over this field to show number of confirmations.</source>
-        <translation>حالة المعاملة. تحوم حول هذا الحقل لعرض عدد  التأكيدات.</translation>
-    </message>
-    <message>
-        <source>Date and time that the transaction was received.</source>
-        <translation>التاريخ والوقت الذي تم فيه تلقي المعاملة.</translation>
-    </message>
-    <message>
-        <source>Type of transaction.</source>
-        <translation>نوع المعاملات</translation>
-    </message>
-    <message>
-        <source>Destination address of transaction.</source>
-        <translation>عنوان وجهة  المعاملة</translation>
-    </message>
-    <message>
-        <source>Amount removed from or added to balance.</source>
-        <translation>المبلغ الذي أزيل أو أضيف الى الرصيد</translation>
-    </message>
-</context>
+    </context>
 <context>
     <name>TransactionView</name>
     <message>
-        <source>All</source>
-        <translation>الكل</translation>
-    </message>
-    <message>
-        <source>Today</source>
-        <translation>اليوم</translation>
-    </message>
-    <message>
-        <source>This week</source>
-        <translation>هدا الاسبوع</translation>
-    </message>
-    <message>
-        <source>This month</source>
-        <translation>هدا الشهر</translation>
-    </message>
-    <message>
-        <source>Last month</source>
-        <translation>الشهر الماضي</translation>
-    </message>
-    <message>
-        <source>This year</source>
-        <translation>هدا العام</translation>
-    </message>
-    <message>
-        <source>Range...</source>
-        <translation>المدى...</translation>
-    </message>
-    <message>
-        <source>Received with</source>
-        <translation>استقبل مع</translation>
-    </message>
-    <message>
-        <source>Sent to</source>
-        <translation>أرسل إلى</translation>
-    </message>
-    <message>
-        <source>To yourself</source>
-        <translation>إليك</translation>
-    </message>
-    <message>
-        <source>Mined</source>
-        <translation>Mined</translation>
-    </message>
-    <message>
-        <source>Other</source>
-        <translation>اخرى</translation>
-    </message>
-    <message>
-        <source>Enter address or label to search</source>
-        <translation>ادخل عنوان أووصف للبحث</translation>
-    </message>
-    <message>
-        <source>Min amount</source>
-        <translation>الحد الأدنى</translation>
-    </message>
-    <message>
-        <source>Copy address</source>
-        <translation>  انسخ عنوان</translation>
-    </message>
-    <message>
-        <source>Copy label</source>
-        <translation> انسخ التسمية</translation>
-    </message>
-    <message>
-        <source>Copy amount</source>
-        <translation>نسخ الكمية</translation>
-    </message>
-    <message>
-        <source>Copy transaction ID</source>
-        <translation>نسخ رقم العملية</translation>
-    </message>
-    <message>
-        <source>Edit label</source>
-        <translation>عدل الوصف</translation>
-    </message>
-    <message>
-        <source>Show transaction details</source>
-        <translation>عرض تفاصيل المعاملة</translation>
-    </message>
-    <message>
-        <source>Exporting Failed</source>
-        <translation>فشل التصدير</translation>
-    </message>
-    <message>
-        <source>Exporting Successful</source>
-        <translation>نجح التصدير</translation>
-    </message>
-    <message>
-        <source>Confirmed</source>
-        <translation>تأكيد</translation>
-    </message>
-    <message>
-        <source>Date</source>
-        <translation>التاريخ</translation>
-    </message>
-    <message>
         <source>Type</source>
-        <translation>النوع</translation>
+        <translation type="unfinished">النوع</translation>
     </message>
-    <message>
-        <source>Label</source>
-        <translation>وصف</translation>
-    </message>
-    <message>
-        <source>Address</source>
-        <translation>عنوان</translation>
-    </message>
-    <message>
-        <source>ID</source>
-        <translation>العنوان</translation>
-    </message>
-    <message>
-        <source>Range:</source>
-        <translation>المدى:</translation>
-    </message>
-    <message>
-        <source>to</source>
-        <translation>الى</translation>
-    </message>
-</context>
-<context>
-    <name>UnitDisplayStatusBarControl</name>
     </context>
 <context>
     <name>WalletFrame</name>
-    </context>
-<context>
-    <name>WalletModel</name>
     <message>
-        <source>Send Coins</source>
-        <translation>إرسال Coins</translation>
+        <source>Create a new wallet</source>
+        <translation type="unfinished">إنشاء محفظة جديدة</translation>
     </message>
-</context>
+    <message>
+        <source>Error</source>
+        <translation type="unfinished">خطأ</translation>
+    </message>
+    </context>
 <context>
     <name>WalletView</name>
     <message>
         <source>&amp;Export</source>
-        <translation>&amp;تصدير</translation>
+        <translation type="unfinished">و إستخرج</translation>
     </message>
     <message>
-        <source>Backup Wallet</source>
-        <translation>نسخ احتياط للمحفظة</translation>
+        <source>Wallet Data</source>
+        <extracomment>Name of the wallet data file format.</extracomment>
+        <translation type="unfinished">بيانات المحفظة</translation>
     </message>
     <message>
-        <source>Backup Failed</source>
-        <translation>فشل النسخ الاحتياطي</translation>
-    </message>
-    <message>
-        <source>Backup Successful</source>
-        <translation>نجاح  النسخ الاحتياطي</translation>
+        <source>Cancel</source>
+        <translation type="unfinished">إلغاء</translation>
     </message>
 </context>
 <context>
     <name>bitcoin-core</name>
     <message>
-        <source>Options:</source>
-        <translation>خيارات: </translation>
+        <source>More than one onion bind address is provided. Using %s for the automatically created Tor onion service.</source>
+        <translation type="unfinished">أكثر من عنوان مربوط بالonion مقدم. استخدام %s من أجل خدمة تور (Tor) المنشأة تلقائيا.</translation>
     </message>
     <message>
-        <source>Specify data directory</source>
-        <translation>حدد مجلد المعلومات</translation>
+        <source>Cannot write to data directory '%s'; check permissions.</source>
+        <translation type="unfinished">لايمكن الكتابة على دليل البيانات '%s'؛ تحقق من السماحيات.</translation>
     </message>
-    <message>
-        <source>Use the test network</source>
-        <translation>استخدم التحقق من الشبكه</translation>
-    </message>
-    <message>
-        <source>Accept connections from outside (default: 1 if no -proxy or -connect)</source>
-        <translation>قبول الاتصالات من خارج</translation>
-    </message>
-    <message>
-        <source>Error: Disk space is low!</source>
-        <translation>تحذير: مساحة القرص منخفضة</translation>
-    </message>
-    <message>
-        <source>Error: Wallet locked, unable to create transaction!</source>
-        <translation>تحذير: المحفظة مغلقة , لا تستطيع تنفيذ المعاملة</translation>
-    </message>
-    <message>
-        <source>Error: system error: </source>
-        <translation>خطأ: خطأ في النظام:</translation>
-    </message>
-    <message>
-        <source>Failed to listen on any port. Use -listen=0 if you want this.</source>
-        <translation>فشل في الاستماع على أي منفذ. استخدام الاستماع = 0 إذا كنت تريد هذا.</translation>
-    </message>
-    <message>
-        <source>Invalid -onion address: '%s'</source>
-        <translation>عنوان اونيون غير صحيح : '%s'</translation>
-    </message>
-    <message>
-        <source>Verifying wallet...</source>
-        <translation>التحقق من المحفظة ...</translation>
-    </message>
-    <message>
-        <source>Wallet options:</source>
-        <translation>خيارات المحفظة :</translation>
-    </message>
-    <message>
-        <source>Information</source>
-        <translation>معلومات</translation>
-    </message>
-    <message>
-        <source>Signing transaction failed</source>
-        <translation>فشل توقيع المعاملة</translation>
-    </message>
-    <message>
-        <source>System error: </source>
-        <translation>خطأ في النظام :</translation>
-    </message>
-    <message>
-        <source>Transaction amount too small</source>
-        <translation>قيمة العملية صغيره جدا</translation>
-    </message>
-    <message>
-        <source>Transaction amounts must be positive</source>
-        <translation>يجب ان يكون قيمة العملية بالموجب</translation>
-    </message>
-    <message>
-        <source>Transaction too large</source>
-        <translation>المعاملة طويلة جدا</translation>
-    </message>
-    <message>
-        <source>Warning</source>
-        <translation>تحذير</translation>
-    </message>
-    <message>
-        <source>Warning: This version is obsolete, upgrade required!</source>
-        <translation>تحذير : هذا الاصدار قديم , يتطلب التحديث</translation>
-    </message>
-    <message>
-        <source>Upgrade wallet to latest format</source>
-        <translation>تحديث المحفظة للنسخة الاخيرة</translation>
-    </message>
-    <message>
-        <source>Server private key (default: server.pem)</source>
-        <translation>المفتاح الخاص بالسيرفر (default: server.pem)</translation>
-    </message>
-    <message>
-        <source>This help message</source>
-        <translation>رسالة المساعدة هذه</translation>
-    </message>
-    <message>
-        <source>Loading addresses...</source>
-        <translation>تحميل العنوان</translation>
-    </message>
-    <message>
-        <source>Error loading wallet.dat: Wallet corrupted</source>
-        <translation>خطأ عند تنزيل wallet.dat: المحفظة تالفة</translation>
-    </message>
-    <message>
-        <source>Error loading wallet.dat</source>
-        <translation>خطأ عند تنزيل wallet.dat</translation>
-    </message>
-    <message>
-        <source>Invalid -proxy address: '%s'</source>
-        <translation>عنوان البروكسي غير صحيح : '%s'</translation>
-    </message>
-    <message>
-        <source>Invalid amount</source>
-        <translation>قيمة غير صحيحة</translation>
-    </message>
-    <message>
-        <source>Insufficient funds</source>
-        <translation>اموال غير كافية</translation>
-    </message>
-    <message>
-        <source>Loading wallet...</source>
-        <translation>تحميل المحفظه</translation>
-    </message>
-    <message>
-        <source>Cannot write default address</source>
-        <translation>لايمكن كتابة العنوان الافتراضي</translation>
-    </message>
-    <message>
-        <source>Rescanning...</source>
-        <translation>إعادة مسح</translation>
-    </message>
-    <message>
-        <source>Done loading</source>
-        <translation>انتهاء التحميل</translation>
-    </message>
-    <message>
-        <source>To use the %s option</source>
-        <translation>لاستخدام %s الخيار</translation>
-    </message>
-    <message>
-        <source>Error</source>
-        <translation>خطأ</translation>
-    </message>
-</context>
+    </context>
 </TS>

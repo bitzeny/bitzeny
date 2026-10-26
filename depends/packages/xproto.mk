@@ -1,11 +1,16 @@
 package=xproto
-$(package)_version=7.0.26
-$(package)_download_path=http://xorg.freedesktop.org/releases/individual/proto
-$(package)_file_name=$(package)-$($(package)_version).tar.bz2
-$(package)_sha256_hash=636162c1759805a5a0114a369dffdeccb8af8c859ef6e1445f26a4e6e046514f
+$(package)_version=7.0.31
+$(package)_download_path=https://xorg.freedesktop.org/releases/individual/proto
+$(package)_file_name=$(package)-$($(package)_version).tar.gz
+$(package)_sha256_hash=6d755eaae27b45c5cc75529a12855fed5de5969b367ed05003944cf901ed43c7
 
 define $(package)_set_vars
-$(package)_config_opts=--disable-shared
+$(package)_config_opts=--without-fop --without-xmlto --without-xsltproc --disable-specs
+$(package)_config_opts += --disable-dependency-tracking --enable-option-checking
+endef
+
+define $(package)_preprocess_cmds
+  cp -f $(BASEDIR)/config.guess $(BASEDIR)/config.sub .
 endef
 
 define $(package)_config_cmds
@@ -16,6 +21,8 @@ define $(package)_build_cmds
   $(MAKE)
 endef
 
+# mkdir detection is broken on Alpine. Set MKDIRPROG to ensure we always
+# use "mkdir -p", and avoid parallelism issues during install.
 define $(package)_stage_cmds
-  $(MAKE) DESTDIR=$($(package)_staging_dir) install
+  $(MAKE) MKDIRPROG="mkdir -p" DESTDIR=$($(package)_staging_dir) install
 endef

@@ -1,330 +1,199 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2014 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2009-present The Bitcoin Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
 #ifndef BITCOIN_UINT256_H
 #define BITCOIN_UINT256_H
 
-#include <assert.h>
+#include <crypto/common.h>
+#include <span.h>
+#include <util/strencodings.h>
+
+#include <algorithm>
+#include <array>
+#include <cassert>
+#include <cstdint>
 #include <cstring>
-#include <stdexcept>
-#include <stdint.h>
+#include <optional>
 #include <string>
-#include <vector>
 
-class uint_error : public std::runtime_error {
-public:
-    explicit uint_error(const std::string& str) : std::runtime_error(str) {}
-};
-
-/** Template base class for unsigned big integers. */
+/** Template base class for fixed-sized opaque blobs. */
 template<unsigned int BITS>
-class base_uint
+class base_blob
 {
 protected:
-    enum { WIDTH=BITS/32 };
-    uint32_t pn[WIDTH];
+    static constexpr int WIDTH = BITS / 8;
+    static_assert(BITS % 8 == 0, "base_blob currently only supports whole bytes.");
+    std::array<uint8_t, WIDTH> m_data;
+    static_assert(WIDTH == sizeof(m_data), "Sanity check");
+
 public:
+    /* construct 0 value by default */
+    constexpr base_blob() : m_data() {}
 
-    base_uint()
+    /* constructor for constants between 1 and 255 */
+    constexpr explicit base_blob(uint8_t v) : m_data{v} {}
+
+    constexpr explicit base_blob(Span<const unsigned char> vch)
     {
-        for (int i = 0; i < WIDTH; i++)
-            pn[i] = 0;
+        assert(vch.size() == WIDTH);
+        std::copy(vch.begin(), vch.end(), m_data.begin());
     }
 
-    base_uint(const base_uint& b)
+    consteval explicit base_blob(std::string_view hex_str);
+
+    constexpr bool IsNull() const
     {
-        for (int i = 0; i < WIDTH; i++)
-            pn[i] = b.pn[i];
+        return std::all_of(m_data.begin(), m_data.end(), [](uint8_t val) {
+            return val == 0;
+        });
     }
 
-    base_uint& operator=(const base_uint& b)
+    constexpr void SetNull()
     {
-        for (int i = 0; i < WIDTH; i++)
-            pn[i] = b.pn[i];
-        return *this;
+        std::fill(m_data.begin(), m_data.end(), 0);
     }
 
-    base_uint(uint64_t b)
-    {
-        pn[0] = (unsigned int)b;
-        pn[1] = (unsigned int)(b >> 32);
-        for (int i = 2; i < WIDTH; i++)
-            pn[i] = 0;
-    }
+    /** Lexicographic ordering
+     * @note Does NOT match the ordering on the corresponding \ref
+     *       base_uint::CompareTo, which starts comparing from the end.
+     */
+    constexpr int Compare(const base_blob& other) const { return std::memcmp(m_data.data(), other.m_data.data(), WIDTH); }
 
-    explicit base_uint(const std::string& str);
-    explicit base_uint(const std::vector<unsigned char>& vch);
+    friend constexpr bool operator==(const base_blob& a, const base_blob& b) { return a.Compare(b) == 0; }
+    friend constexpr bool operator!=(const base_blob& a, const base_blob& b) { return a.Compare(b) != 0; }
+    friend constexpr bool operator<(const base_blob& a, const base_blob& b) { return a.Compare(b) < 0; }
 
-    bool operator!() const
-    {
-        for (int i = 0; i < WIDTH; i++)
-            if (pn[i] != 0)
-                return false;
-        return true;
-    }
-
-    const base_uint operator~() const
-    {
-        base_uint ret;
-        for (int i = 0; i < WIDTH; i++)
-            ret.pn[i] = ~pn[i];
-        return ret;
-    }
-
-    const base_uint operator-() const
-    {
-        base_uint ret;
-        for (int i = 0; i < WIDTH; i++)
-            ret.pn[i] = ~pn[i];
-        ret++;
-        return ret;
-    }
-
-    double getdouble() const;
-
-    base_uint& operator=(uint64_t b)
-    {
-        pn[0] = (unsigned int)b;
-        pn[1] = (unsigned int)(b >> 32);
-        for (int i = 2; i < WIDTH; i++)
-            pn[i] = 0;
-        return *this;
-    }
-
-    base_uint& operator^=(const base_uint& b)
-    {
-        for (int i = 0; i < WIDTH; i++)
-            pn[i] ^= b.pn[i];
-        return *this;
-    }
-
-    base_uint& operator&=(const base_uint& b)
-    {
-        for (int i = 0; i < WIDTH; i++)
-            pn[i] &= b.pn[i];
-        return *this;
-    }
-
-    base_uint& operator|=(const base_uint& b)
-    {
-        for (int i = 0; i < WIDTH; i++)
-            pn[i] |= b.pn[i];
-        return *this;
-    }
-
-    base_uint& operator^=(uint64_t b)
-    {
-        pn[0] ^= (unsigned int)b;
-        pn[1] ^= (unsigned int)(b >> 32);
-        return *this;
-    }
-
-    base_uint& operator|=(uint64_t b)
-    {
-        pn[0] |= (unsigned int)b;
-        pn[1] |= (unsigned int)(b >> 32);
-        return *this;
-    }
-
-    base_uint& operator<<=(unsigned int shift);
-    base_uint& operator>>=(unsigned int shift);
-
-    base_uint& operator+=(const base_uint& b)
-    {
-        uint64_t carry = 0;
-        for (int i = 0; i < WIDTH; i++)
-        {
-            uint64_t n = carry + pn[i] + b.pn[i];
-            pn[i] = n & 0xffffffff;
-            carry = n >> 32;
-        }
-        return *this;
-    }
-
-    base_uint& operator-=(const base_uint& b)
-    {
-        *this += -b;
-        return *this;
-    }
-
-    base_uint& operator+=(uint64_t b64)
-    {
-        base_uint b;
-        b = b64;
-        *this += b;
-        return *this;
-    }
-
-    base_uint& operator-=(uint64_t b64)
-    {
-        base_uint b;
-        b = b64;
-        *this += -b;
-        return *this;
-    }
-
-    base_uint& operator*=(uint32_t b32);
-    base_uint& operator*=(const base_uint& b);
-    base_uint& operator/=(const base_uint& b);
-
-    base_uint& operator++()
-    {
-        // prefix operator
-        int i = 0;
-        while (++pn[i] == 0 && i < WIDTH-1)
-            i++;
-        return *this;
-    }
-
-    const base_uint operator++(int)
-    {
-        // postfix operator
-        const base_uint ret = *this;
-        ++(*this);
-        return ret;
-    }
-
-    base_uint& operator--()
-    {
-        // prefix operator
-        int i = 0;
-        while (--pn[i] == (uint32_t)-1 && i < WIDTH-1)
-            i++;
-        return *this;
-    }
-
-    const base_uint operator--(int)
-    {
-        // postfix operator
-        const base_uint ret = *this;
-        --(*this);
-        return ret;
-    }
-
-    int CompareTo(const base_uint& b) const;
-    bool EqualTo(uint64_t b) const;
-
-    friend inline const base_uint operator+(const base_uint& a, const base_uint& b) { return base_uint(a) += b; }
-    friend inline const base_uint operator-(const base_uint& a, const base_uint& b) { return base_uint(a) -= b; }
-    friend inline const base_uint operator*(const base_uint& a, const base_uint& b) { return base_uint(a) *= b; }
-    friend inline const base_uint operator/(const base_uint& a, const base_uint& b) { return base_uint(a) /= b; }
-    friend inline const base_uint operator|(const base_uint& a, const base_uint& b) { return base_uint(a) |= b; }
-    friend inline const base_uint operator&(const base_uint& a, const base_uint& b) { return base_uint(a) &= b; }
-    friend inline const base_uint operator^(const base_uint& a, const base_uint& b) { return base_uint(a) ^= b; }
-    friend inline const base_uint operator>>(const base_uint& a, int shift) { return base_uint(a) >>= shift; }
-    friend inline const base_uint operator<<(const base_uint& a, int shift) { return base_uint(a) <<= shift; }
-    friend inline const base_uint operator*(const base_uint& a, uint32_t b) { return base_uint(a) *= b; }
-    friend inline bool operator==(const base_uint& a, const base_uint& b) { return memcmp(a.pn, b.pn, sizeof(a.pn)) == 0; }
-    friend inline bool operator!=(const base_uint& a, const base_uint& b) { return memcmp(a.pn, b.pn, sizeof(a.pn)) != 0; }
-    friend inline bool operator>(const base_uint& a, const base_uint& b) { return a.CompareTo(b) > 0; }
-    friend inline bool operator<(const base_uint& a, const base_uint& b) { return a.CompareTo(b) < 0; }
-    friend inline bool operator>=(const base_uint& a, const base_uint& b) { return a.CompareTo(b) >= 0; }
-    friend inline bool operator<=(const base_uint& a, const base_uint& b) { return a.CompareTo(b) <= 0; }
-    friend inline bool operator==(const base_uint& a, uint64_t b) { return a.EqualTo(b); }
-    friend inline bool operator!=(const base_uint& a, uint64_t b) { return !a.EqualTo(b); }
-
+    /** @name Hex representation
+     *
+     * The reverse-byte hex representation is a convenient way to view the blob
+     * as a number, because it is consistent with the way the base_uint class
+     * converts blobs to numbers.
+     *
+     * @note base_uint treats the blob as an array of bytes with the numerically
+     * least significant byte first and the most significant byte last. Because
+     * numbers are typically written with the most significant digit first and
+     * the least significant digit last, the reverse hex display of the blob
+     * corresponds to the same numeric value that base_uint interprets from the
+     * blob.
+     * @{*/
     std::string GetHex() const;
-    void SetHex(const char* psz);
-    void SetHex(const std::string& str);
+    /** Unlike FromHex this accepts any invalid input, thus it is fragile and deprecated!
+     *
+     * - Hex numbers that don't specify enough bytes to fill the internal array
+     *   will be treated as setting the beginning of it, which corresponds to
+     *   the least significant bytes when converted to base_uint.
+     *
+     * - Hex numbers specifying too many bytes will have the numerically most
+     *   significant bytes (the beginning of the string) narrowed away.
+     *
+     * - An odd count of hex digits will result in the high bits of the leftmost
+     *   byte being zero.
+     *   "0x123" => {0x23, 0x1, 0x0, ..., 0x0}
+     */
+    void SetHexDeprecated(std::string_view str);
     std::string ToString() const;
+    /**@}*/
 
-    unsigned char* begin()
+    constexpr const unsigned char* data() const { return m_data.data(); }
+    constexpr unsigned char* data() { return m_data.data(); }
+
+    constexpr unsigned char* begin() { return m_data.data(); }
+    constexpr unsigned char* end() { return m_data.data() + WIDTH; }
+
+    constexpr const unsigned char* begin() const { return m_data.data(); }
+    constexpr const unsigned char* end() const { return m_data.data() + WIDTH; }
+
+    static constexpr unsigned int size() { return WIDTH; }
+
+    constexpr uint64_t GetUint64(int pos) const { return ReadLE64(m_data.data() + pos * 8); }
+
+    template<typename Stream>
+    void Serialize(Stream& s) const
     {
-        return (unsigned char*)&pn[0];
-    }
-
-    unsigned char* end()
-    {
-        return (unsigned char*)&pn[WIDTH];
-    }
-
-    const unsigned char* begin() const
-    {
-        return (unsigned char*)&pn[0];
-    }
-
-    const unsigned char* end() const
-    {
-        return (unsigned char*)&pn[WIDTH];
-    }
-
-    unsigned int size() const
-    {
-        return sizeof(pn);
-    }
-
-    // Returns the position of the highest bit set plus one, or zero if the
-    // value is zero.
-    unsigned int bits() const;
-
-    uint64_t GetLow64() const
-    {
-        assert(WIDTH >= 2);
-        return pn[0] | (uint64_t)pn[1] << 32;
-    }
-
-    unsigned int GetSerializeSize(int nType, int nVersion) const
-    {
-        return sizeof(pn);
+        s << Span(m_data);
     }
 
     template<typename Stream>
-    void Serialize(Stream& s, int nType, int nVersion) const
+    void Unserialize(Stream& s)
     {
-        s.write((char*)pn, sizeof(pn));
-    }
-
-    template<typename Stream>
-    void Unserialize(Stream& s, int nType, int nVersion)
-    {
-        s.read((char*)pn, sizeof(pn));
+        s.read(MakeWritableByteSpan(m_data));
     }
 };
 
-/** 160-bit unsigned big integer. */
-class uint160 : public base_uint<160> {
+template <unsigned int BITS>
+consteval base_blob<BITS>::base_blob(std::string_view hex_str)
+{
+    // Non-lookup table version of HexDigit().
+    auto from_hex = [](const char c) -> int8_t {
+        if (c >= '0' && c <= '9') return c - '0';
+        if (c >= 'a' && c <= 'f') return c - 'a' + 0xA;
+        if (c >= 'A' && c <= 'F') return c - 'A' + 0xA;
+
+        assert(false); // Reached if ctor is called with an invalid hex digit.
+    };
+
+    assert(hex_str.length() == m_data.size() * 2); // 2 hex digits per byte.
+    auto str_it = hex_str.rbegin();
+    for (auto& elem : m_data) {
+        auto lo = from_hex(*(str_it++));
+        elem = (from_hex(*(str_it++)) << 4) | lo;
+    }
+}
+
+namespace detail {
+/**
+ * Writes the hex string (in reverse byte order) into a new uintN_t object
+ * and only returns a value iff all of the checks pass:
+ *   - Input length is uintN_t::size()*2
+ *   - All characters are hex
+ */
+template <class uintN_t>
+std::optional<uintN_t> FromHex(std::string_view str)
+{
+    if (uintN_t::size() * 2 != str.size() || !IsHex(str)) return std::nullopt;
+    uintN_t rv;
+    rv.SetHexDeprecated(str);
+    return rv;
+}
+} // namespace detail
+
+/** 160-bit opaque blob.
+ * @note This type is called uint160 for historical reasons only. It is an opaque
+ * blob of 160 bits and has no integer operations.
+ */
+class uint160 : public base_blob<160> {
 public:
-    uint160() {}
-    uint160(const base_uint<160>& b) : base_uint<160>(b) {}
-    uint160(uint64_t b) : base_uint<160>(b) {}
-    explicit uint160(const std::string& str) : base_uint<160>(str) {}
-    explicit uint160(const std::vector<unsigned char>& vch) : base_uint<160>(vch) {}
+    static std::optional<uint160> FromHex(std::string_view str) { return detail::FromHex<uint160>(str); }
+    constexpr uint160() = default;
+    constexpr explicit uint160(Span<const unsigned char> vch) : base_blob<160>(vch) {}
 };
 
-/** 256-bit unsigned big integer. */
-class uint256 : public base_uint<256> {
+/** 256-bit opaque blob.
+ * @note This type is called uint256 for historical reasons only. It is an
+ * opaque blob of 256 bits and has no integer operations. Use arith_uint256 if
+ * those are required.
+ */
+class uint256 : public base_blob<256> {
 public:
-    uint256() {}
-    uint256(const base_uint<256>& b) : base_uint<256>(b) {}
-    uint256(uint64_t b) : base_uint<256>(b) {}
-    explicit uint256(const std::string& str) : base_uint<256>(str) {}
-    explicit uint256(const std::vector<unsigned char>& vch) : base_uint<256>(vch) {}
-
-    // The "compact" format is a representation of a whole
-    // number N using an unsigned 32bit number similar to a
-    // floating point format.
-    // The most significant 8 bits are the unsigned exponent of base 256.
-    // This exponent can be thought of as "number of bytes of N".
-    // The lower 23 bits are the mantissa.
-    // Bit number 24 (0x800000) represents the sign of N.
-    // N = (-1^sign) * mantissa * 256^(exponent-3)
-    //
-    // Satoshi's original implementation used BN_bn2mpi() and BN_mpi2bn().
-    // MPI uses the most significant bit of the first byte as sign.
-    // Thus 0x1234560000 is compact (0x05123456)
-    // and  0xc0de000000 is compact (0x0600c0de)
-    // (0x05c0de00) would be -0x40de000000
-    //
-    // Bitcoin only uses this "compact" format for encoding difficulty
-    // targets, which are unsigned 256bit quantities.  Thus, all the
-    // complexities of the sign bit and using base 256 are probably an
-    // implementation accident.
-    uint256& SetCompact(uint32_t nCompact, bool *pfNegative = NULL, bool *pfOverflow = NULL);
-    uint32_t GetCompact(bool fNegative = false) const;
-
-    uint64_t GetHash(const uint256& salt) const;
+    static std::optional<uint256> FromHex(std::string_view str) { return detail::FromHex<uint256>(str); }
+    constexpr uint256() = default;
+    consteval explicit uint256(std::string_view hex_str) : base_blob<256>(hex_str) {}
+    constexpr explicit uint256(uint8_t v) : base_blob<256>(v) {}
+    constexpr explicit uint256(Span<const unsigned char> vch) : base_blob<256>(vch) {}
+    static const uint256 ZERO;
+    static const uint256 ONE;
 };
+
+/* uint256 from std::string_view, containing byte-reversed hex encoding.
+ * DEPRECATED. Unlike FromHex this accepts any invalid input, thus it is fragile and deprecated!
+ */
+inline uint256 uint256S(std::string_view str)
+{
+    uint256 rv;
+    rv.SetHexDeprecated(str);
+    return rv;
+}
 
 #endif // BITCOIN_UINT256_H

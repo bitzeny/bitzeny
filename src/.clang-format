@@ -1,16 +1,23 @@
+Language:        Cpp
 AccessModifierOffset: -4
+AlignAfterOpenBracket: true
 AlignEscapedNewlinesLeft: true
 AlignTrailingComments: true
-AllowAllParametersOfDeclarationOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: true
 AllowShortFunctionsOnASingleLine: All
-AllowShortIfStatementsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: true
 AllowShortLoopsOnASingleLine: false
 AlwaysBreakBeforeMultilineStrings: false
 AlwaysBreakTemplateDeclarations: true
-BinPackParameters: false
+BinPackArguments: true
+BinPackParameters: true
 BreakBeforeBinaryOperators: false
-BreakBeforeBraces: Linux
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: true
+  AfterFunction: true
 BreakBeforeTernaryOperators: false
 BreakConstructorInitializersBeforeComma: false
 ColumnLimit:     0
@@ -21,22 +28,12 @@ ContinuationIndentWidth: 4
 Cpp11BracedListStyle: true
 DerivePointerAlignment: false
 DisableFormat:   false
-ForEachMacros:   [ foreach, Q_FOREACH, BOOST_FOREACH, BOOST_REVERSE_FOREACH ]
 IndentCaseLabels: false
 IndentFunctionDeclarationAfterType: false
 IndentWidth:     4
 KeepEmptyLinesAtTheStartOfBlocks: false
-Language:        Cpp
 MaxEmptyLinesToKeep: 2
 NamespaceIndentation: None
-ObjCSpaceAfterProperty: false
-ObjCSpaceBeforeProtocolList: false
-PenaltyBreakBeforeFirstCallParameter: 1
-PenaltyBreakComment: 300
-PenaltyBreakFirstLessLess: 120
-PenaltyBreakString: 1000
-PenaltyExcessCharacter: 1000000
-PenaltyReturnTypeOnItsOwnLine: 200
 PointerAlignment: Left
 SpaceBeforeAssignmentOperators: true
 SpaceBeforeParens: ControlStatements
@@ -46,6 +43,7 @@ SpacesInAngles:  false
 SpacesInContainerLiterals: true
 SpacesInCStyleCastParentheses: false
 SpacesInParentheses: false
-Standard:        Cpp03
-TabWidth:        8
+BreakBeforeConceptDeclarations: Always
+RequiresExpressionIndentation: OuterScope
+Standard: c++20
 UseTab:          Never

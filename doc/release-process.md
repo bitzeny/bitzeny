@@ -1,218 +1,327 @@
 Release Process
 ====================
 
-* update translations (ping wumpus, Diapolo or tcatm on IRC)
-* see https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md#syncing-with-transifex
+## Branch updates
 
-* * *
+### Before every release candidate
 
-###update (commit) version in sources
+* Update release candidate version in `configure.ac` (`CLIENT_VERSION_RC`).
+* Update manpages (after rebuilding the binaries), see [gen-manpages.py](https://github.com/bitcoin/bitcoin/blob/master/contrib/devtools/README.md#gen-manpagespy).
+* Update bitcoin.conf and commit changes if they exist, see [gen-bitcoin-conf.sh](https://github.com/bitcoin/bitcoin/blob/master/contrib/devtools/README.md#gen-bitcoin-confsh).
 
-	contrib/verifysfbinaries/verify.sh
-	doc/README*
-	share/setup.nsi
-	src/clientversion.h (change CLIENT_VERSION_IS_RELEASE to true)
+### Before every major and minor release
 
-###tag version in git
+* Update [bips.md](bips.md) to account for changes since the last release.
+* Update version in `configure.ac` (don't forget to set `CLIENT_VERSION_RC` to `0`).
+* Update manpages (see previous section)
+* Write release notes (see "Write the release notes" below) in doc/release-notes.md. If necessary,
+  archive the previous release notes as doc/release-notes/release-notes-${VERSION}.md.
 
-	git tag -s v(new version, e.g. 0.8.0)
+### Before every major release
 
-###write release notes. git shortlog helps a lot, for example:
+* On both the master branch and the new release branch:
+  - update `CLIENT_VERSION_MAJOR` in [`configure.ac`](../configure.ac)
+* On the new release branch in [`configure.ac`](../configure.ac)(see [this commit](https://github.com/bitcoin/bitcoin/commit/742f7dd)):
+  - set `CLIENT_VERSION_MINOR` to `0`
+  - set `CLIENT_VERSION_BUILD` to `0`
+  - set `CLIENT_VERSION_IS_RELEASE` to `true`
 
-	git shortlog --no-merges v(current version, e.g. 0.7.2)..v(new version, e.g. 0.8.0)
+#### Before branch-off
 
-* * *
+* Update translations see [translation_process.md](https://github.com/bitcoin/bitcoin/blob/master/doc/translation_process.md#synchronising-translations).
+* Update hardcoded [seeds](/contrib/seeds/README.md), see [this pull request](https://github.com/bitcoin/bitcoin/pull/27488) for an example.
+* Update the following variables in [`src/kernel/chainparams.cpp`](/src/kernel/chainparams.cpp) for mainnet, testnet, and signet:
+  - `m_assumed_blockchain_size` and `m_assumed_chain_state_size` with the current size plus some overhead (see
+    [this](#how-to-calculate-assumed-blockchain-and-chain-state-size) for information on how to calculate them).
+  - The following updates should be reviewed with `reindex-chainstate` and `assumevalid=0` to catch any defect
+    that causes rejection of blocks in the past history.
+  - `chainTxData` with statistics about the transaction count and rate. Use the output of the `getchaintxstats` RPC with an
+    `nBlocks` of 4096 (28 days) and a `bestblockhash` of RPC `getbestblockhash`; see
+    [this pull request](https://github.com/bitcoin/bitcoin/pull/28591) for an example. Reviewers can verify the results by running
+    `getchaintxstats <window_block_count> <window_final_block_hash>` with the `window_block_count` and `window_final_block_hash` from your output.
+  - `defaultAssumeValid` with the output of RPC `getblockhash` using the `height` of `window_final_block_height` above
+    (and update the block height comment with that height), taking into account the following:
+    - On mainnet, the selected value must not be orphaned, so it may be useful to set the height two blocks back from the tip.
+    - Testnet should be set with a height some tens of thousands back from the tip, due to reorgs there.
+  - `nMinimumChainWork` with the "chainwork" value of RPC `getblockheader` using the same height as that selected for the previous step.
+* Consider updating the headers synchronization tuning parameters to account for the chainparams updates.
+  The optimal values change very slowly, so this isn't strictly necessary every release, but doing so doesn't hurt.
+  - Update configuration variables in [`contrib/devtools/headerssync-params.py`](/contrib/devtools/headerssync-params.py):
+    - Set `TIME` to the software's expected supported lifetime -- after this time, its ability to defend against a high bandwidth timewarp attacker will begin to degrade.
+    - Set `MINCHAINWORK_HEADERS` to the height used for the `nMinimumChainWork` calculation above.
+    - Check that the other variables still look reasonable.
+  - Run the script. It works fine in CPython, but PyPy is much faster (seconds instead of minutes): `pypy3 contrib/devtools/headerssync-params.py`.
+  - Paste the output defining `HEADER_COMMITMENT_PERIOD` and `REDOWNLOAD_BUFFER_SIZE` into the top of [`src/headerssync.cpp`](/src/headerssync.cpp).
+- Clear the release notes and move them to the wiki (see "Write the release notes" below).
+- Translations on Transifex:
+    - Pull translations from Transifex into the master branch.
+    - Create [a new resource](https://app.transifex.com/bitcoin/bitcoin/content/) named after the major version with the slug `qt-translation-<RRR>x`, where `RRR` is the major branch number padded with zeros. Use `src/qt/locale/bitcoin_en.xlf` to create it.
+    - In the project workflow settings, ensure that [Translation Memory Fill-up](https://help.transifex.com/en/articles/6224817-setting-up-translation-memory-fill-up) is enabled and that [Translation Memory Context Matching](https://help.transifex.com/en/articles/6224753-translation-memory-with-context) is disabled.
+    - Update the Transifex slug in [`.tx/config`](/.tx/config) to the slug of the resource created in the first step. This identifies which resource the translations will be synchronized from.
+    - Make an announcement that translators can start translating for the new version. You can use one of the [previous announcements](https://app.transifex.com/bitcoin/communication/) as a template.
+    - Change the auto-update URL for the resource to `master`, e.g. `https://raw.githubusercontent.com/bitcoin/bitcoin/master/src/qt/locale/bitcoin_en.xlf`. (Do this only after the previous steps, to prevent an auto-update from interfering.)
 
-###perform gitian builds
+#### After branch-off (on the major release branch)
 
- From a directory containing the bitcoin source, gitian-builder and gitian.sigs
-  
-	export SIGNER=(your gitian key, ie bluematt, sipa, etc)
-	export VERSION=(new version, e.g. 0.8.0)
-	pushd ./bitcoin
-	git checkout v${VERSION}
-	popd
-	pushd ./gitian-builder
+- Update the versions.
+- Create the draft, named "*version* Release Notes Draft", as a [collaborative wiki](https://github.com/bitcoin-core/bitcoin-devwiki/wiki/_new).
+- Clear the release notes: `cp doc/release-notes-empty-template.md doc/release-notes.md`
+- Create a pinned meta-issue for testing the release candidate (see [this issue](https://github.com/bitcoin/bitcoin/issues/27621) for an example) and provide a link to it in the release announcements where useful.
+- Translations on Transifex
+    - Change the auto-update URL for the new major version's resource away from `master` and to the branch, e.g. `https://raw.githubusercontent.com/bitcoin/bitcoin/<branch>/src/qt/locale/bitcoin_en.xlf`. Do not forget this or it will keep tracking the translations on master instead, drifting away from the specific major release.
+- Prune inputs from the qa-assets repo (See [pruning
+  inputs](https://github.com/bitcoin-core/qa-assets#pruning-inputs)).
 
-###fetch and build inputs: (first time, or when dependency versions change)
- 
-	mkdir -p inputs; cd inputs/
+#### Before final release
 
- Register and download the Apple SDK: (see OSX Readme for details)
- 
- https://developer.apple.com/downloads/download.action?path=Developer_Tools/xcode_4.6.3/xcode4630916281a.dmg
- 
- Using a Mac, create a tarball for the 10.7 SDK and copy it to the inputs directory:
- 
-	tar -C /Volumes/Xcode/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/ -czf MacOSX10.7.sdk.tar.gz MacOSX10.7.sdk
+- Merge the release notes from [the wiki](https://github.com/bitcoin-core/bitcoin-devwiki/wiki/) into the branch.
+- Ensure the "Needs release note" label is removed from all relevant pull
+  requests and issues:
+  https://github.com/bitcoin/bitcoin/issues?q=label%3A%22Needs+release+note%22
 
- Download remaining inputs, and build everything:
- 
-	wget 'http://miniupnp.free.fr/files/download.php?file=miniupnpc-1.9.tar.gz' -O miniupnpc-1.9.tar.gz
-	wget 'https://www.openssl.org/source/openssl-1.0.1h.tar.gz'
-	wget 'http://download.oracle.com/berkeley-db/db-4.8.30.NC.tar.gz'
-	wget 'http://zlib.net/zlib-1.2.8.tar.gz'
-	wget 'ftp://ftp.simplesystems.org/pub/png/src/history/libpng16/libpng-1.6.8.tar.gz'
-	wget 'https://fukuchi.org/works/qrencode/qrencode-3.4.3.tar.bz2'
-	wget 'https://downloads.sourceforge.net/project/boost/boost/1.55.0/boost_1_55_0.tar.bz2'
-	wget 'https://svn.boost.org/trac/boost/raw-attachment/ticket/7262/boost-mingw.patch' -O boost-mingw-gas-cross-compile-2013-03-03.patch
-	wget 'https://download.qt-project.org/official_releases/qt/5.2/5.2.0/single/qt-everywhere-opensource-src-5.2.0.tar.gz'
-	wget 'https://download.qt-project.org/official_releases/qt/5.2/5.2.1/single/qt-everywhere-opensource-src-5.2.1.tar.gz'
-	wget 'https://download.qt-project.org/archive/qt/4.6/qt-everywhere-opensource-src-4.6.4.tar.gz'
-	wget 'https://protobuf.googlecode.com/files/protobuf-2.5.0.tar.bz2'
-	wget 'https://github.com/mingwandroid/toolchain4/archive/10cc648683617cca8bcbeae507888099b41b530c.tar.gz'
-	wget 'http://www.opensource.apple.com/tarballs/cctools/cctools-809.tar.gz'
-	wget 'http://www.opensource.apple.com/tarballs/dyld/dyld-195.5.tar.gz'
-	wget 'http://www.opensource.apple.com/tarballs/ld64/ld64-127.2.tar.gz'
-	wget 'http://pkgs.fedoraproject.org/repo/pkgs/cdrkit/cdrkit-1.1.11.tar.gz/efe08e2f3ca478486037b053acd512e9/cdrkit-1.1.11.tar.gz'
-	wget 'https://github.com/theuni/libdmg-hfsplus/archive/libdmg-hfsplus-v0.1.tar.gz'
-	wget 'http://llvm.org/releases/3.2/clang+llvm-3.2-x86-linux-ubuntu-12.04.tar.gz' -O clang-llvm-3.2-x86-linux-ubuntu-12.04.tar.gz
-	wget 'https://raw.githubusercontent.com/theuni/osx-cross-depends/master/patches/cdrtools/genisoimage.diff' -O cdrkit-deterministic.patch
-	cd ..
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/boost-linux.yml
-	mv build/out/boost-*.zip inputs/
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/deps-linux.yml
-	mv build/out/bitcoin-deps-*.zip inputs/
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/qt-linux.yml
-	mv build/out/qt-*.tar.gz inputs/
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/boost-win.yml
-	mv build/out/boost-*.zip inputs/
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/deps-win.yml
-	mv build/out/bitcoin-deps-*.zip inputs/
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/qt-win.yml
-	mv build/out/qt-*.zip inputs/
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/protobuf-win.yml
-	mv build/out/protobuf-*.zip inputs/
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/gitian-osx-native.yml
-	mv build/out/osx-*.tar.gz inputs/
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/gitian-osx-depends.yml
-	mv build/out/osx-*.tar.gz inputs/
-	./bin/gbuild ../bitcoin/contrib/gitian-descriptors/gitian-osx-qt.yml
-	mv build/out/osx-*.tar.gz inputs/
+#### Tagging a release (candidate)
 
- The expected SHA256 hashes of the intermediate inputs are:
+To tag the version (or release candidate) in git, use the `make-tag.py` script from [bitcoin-maintainer-tools](https://github.com/bitcoin-core/bitcoin-maintainer-tools). From the root of the repository run:
 
-    f29b7d9577417333fb56e023c2977f5726a7c297f320b175a4108cf7cd4c2d29  boost-linux32-1.55.0-gitian-r1.zip
-    88232451c4104f7eb16e469ac6474fd1231bd485687253f7b2bdf46c0781d535  boost-linux64-1.55.0-gitian-r1.zip
-    46710f673467e367738d8806e45b4cb5931aaeea61f4b6b55a68eea56d5006c5  bitcoin-deps-linux32-gitian-r6.zip
-    f03be39fb26670243d3a659e64d18e19d03dec5c11e9912011107768390b5268  bitcoin-deps-linux64-gitian-r6.zip
-    57e57dbdadc818cd270e7e00500a5e1085b3bcbdef69a885f0fb7573a8d987e1  qt-linux32-4.6.4-gitian-r1.tar.gz
-    60eb4b9c5779580b7d66529efa5b2836ba1a70edde2a0f3f696d647906a826be  qt-linux64-4.6.4-gitian-r1.tar.gz
-    60dc2d3b61e9c7d5dbe2f90d5955772ad748a47918ff2d8b74e8db9b1b91c909  boost-win32-1.55.0-gitian-r6.zip
-    f65fcaf346bc7b73bc8db3a8614f4f6bee2f61fcbe495e9881133a7c2612a167  boost-win64-1.55.0-gitian-r6.zip
-    70de248cd0dd7e7476194129e818402e974ca9c5751cbf591644dc9f332d3b59  bitcoin-deps-win32-gitian-r13.zip
-    9eace4c76f639f4f3580a478eee4f50246e1bbb5ccdcf37a158261a5a3fa3e65  bitcoin-deps-win64-gitian-r13.zip
-    963e3e5e85879010a91143c90a711a5d1d5aba992e38672cdf7b54e42c56b2f1  qt-win32-5.2.0-gitian-r3.zip
-    751c579830d173ef3e6f194e83d18b92ebef6df03289db13ab77a52b6bc86ef0  qt-win64-5.2.0-gitian-r3.zip
-    e2e403e1a08869c7eed4d4293bce13d51ec6a63592918b90ae215a0eceb44cb4  protobuf-win32-2.5.0-gitian-r4.zip
-    a0999037e8b0ef9ade13efd88fee261ba401f5ca910068b7e0cd3262ba667db0  protobuf-win64-2.5.0-gitian-r4.zip
-    512bc0622c883e2e0f4cbc3fedfd8c2402d06c004ce6fb32303cc2a6f405b6df  osx-native-depends-r3.tar.gz
-    927e4b222be6d590b4bc2fc185872a5d0ca5c322adb983764d3ed84be6bdbc81  osx-depends-r4.tar.gz
-    ec95abef1df2b096a970359787c01d8c45e2a4475b7ae34e12c022634fbdba8a  osx-depends-qt-5.2.1-r4.tar.gz
+    ../bitcoin-maintainer-tools/make-tag.py v(new version, e.g. 25.0)
 
+This will perform a few last-minute consistency checks in the build system files, and if they pass, create a signed tag.
 
- Build Bitcoin Core for Linux, Windows, and OS X:
-  
-	./bin/gbuild --commit bitcoin=v${VERSION} ../bitcoin/contrib/gitian-descriptors/gitian-linux.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-linux --destination ../gitian.sigs/ ../bitcoin/contrib/gitian-descriptors/gitian-linux.yml
-	pushd build/out
-	zip -r bitcoin-${VERSION}-linux-gitian.zip *
-	mv bitcoin-${VERSION}-linux-gitian.zip ../../../
-	popd
-	./bin/gbuild --commit bitcoin=v${VERSION} ../bitcoin/contrib/gitian-descriptors/gitian-win.yml
-	./bin/gsign --signer $SIGNER --release ${VERSION}-win --destination ../gitian.sigs/ ../bitcoin/contrib/gitian-descriptors/gitian-win.yml
-	pushd build/out
-	zip -r bitcoin-${VERSION}-win-gitian.zip *
-	mv bitcoin-${VERSION}-win-gitian.zip ../../../
-	popd
-        ./bin/gbuild --commit bitcoin=v${VERSION} ../bitcoin/contrib/gitian-descriptors/gitian-osx-bitcoin.yml
-        ./bin/gsign --signer $SIGNER --release ${VERSION}-osx --destination ../gitian.sigs/ ../bitcoin/contrib/gitian-descriptors/gitian-osx-bitcoin.yml
-	pushd build/out
-	mv Bitcoin-Qt.dmg ../../../
-	popd
-	popd
+## Building
 
-  Build output expected:
+### First time / New builders
 
-  1. linux 32-bit and 64-bit binaries + source (bitcoin-${VERSION}-linux-gitian.zip)
-  2. windows 32-bit and 64-bit binaries + installer + source (bitcoin-${VERSION}-win-gitian.zip)
-  3. OSX installer (Bitcoin-Qt.dmg)
-  4. Gitian signatures (in gitian.sigs/${VERSION}-<linux|win|osx>/(your gitian key)/
+Install Guix using one of the installation methods detailed in
+[contrib/guix/INSTALL.md](/contrib/guix/INSTALL.md).
 
-repackage gitian builds for release as stand-alone zip/tar/installer exe
+Check out the source code in the following directory hierarchy.
 
-**Linux .tar.gz:**
+    cd /path/to/your/toplevel/build
+    git clone https://github.com/bitcoin-core/guix.sigs.git
+    git clone https://github.com/bitcoin-core/bitcoin-detached-sigs.git
+    git clone https://github.com/bitcoin/bitcoin.git
 
-	unzip bitcoin-${VERSION}-linux-gitian.zip -d bitcoin-${VERSION}-linux
-	tar czvf bitcoin-${VERSION}-linux.tar.gz bitcoin-${VERSION}-linux
-	rm -rf bitcoin-${VERSION}-linux
+### Write the release notes
 
-**Windows .zip and setup.exe:**
+Open a draft of the release notes for collaborative editing at https://github.com/bitcoin-core/bitcoin-devwiki/wiki.
 
-	unzip bitcoin-${VERSION}-win-gitian.zip -d bitcoin-${VERSION}-win
-	mv bitcoin-${VERSION}-win/bitcoin-*-setup.exe .
-	zip -r bitcoin-${VERSION}-win.zip bitcoin-${VERSION}-win
-	rm -rf bitcoin-${VERSION}-win
+For the period during which the notes are being edited on the wiki, the version on the branch should be wiped and replaced with a link to the wiki which should be used for all announcements until `-final`.
 
-**Mac OS X .dmg:**
+Generate list of authors:
 
-	mv Bitcoin-Qt.dmg bitcoin-${VERSION}-osx.dmg
+    git log --format='- %aN' v(current version, e.g. 25.0)..v(new version, e.g. 25.1) | grep -v 'merge-script' | sort -fiu
 
-###Next steps:
+### Setup and perform Guix builds
 
-Commit your signature to gitian.sigs:
+Checkout the Bitcoin Core version you'd like to build:
 
-	pushd gitian.sigs
-	git add ${VERSION}-linux/${SIGNER}
-	git add ${VERSION}-win/${SIGNER}
-	git add ${VERSION}-osx/${SIGNER}
-	git commit -a
-	git push  # Assuming you can push to the gitian.sigs tree
-	popd
-
--------------------------------------------------------------------------
-
-### After 3 or more people have gitian-built and their results match:
-
-- Perform code-signing.
-
-    - Code-sign Windows -setup.exe (in a Windows virtual machine using signtool)
-
-    - Code-sign MacOSX .dmg
-
-  Note: only Gavin has the code-signing keys currently.
-
-- Create `SHA256SUMS.asc` for the builds, and GPG-sign it:
-```bash
-sha256sum * > SHA256SUMS
-gpg --digest-algo sha256 --clearsign SHA256SUMS # outputs SHA256SUMS.asc
-rm SHA256SUMS
+```sh
+pushd ./bitcoin
+SIGNER='(your builder key, ie bluematt, sipa, etc)'
+VERSION='(new version without v-prefix, e.g. 25.0)'
+git fetch origin "v${VERSION}"
+git checkout "v${VERSION}"
+popd
 ```
-(the digest algorithm is forced to sha256 to avoid confusion of the `Hash:` header that GPG adds with the SHA256 used for the files)
 
-- Upload zips and installers, as well as `SHA256SUMS.asc` from last step, to the bitcoin.org server
+Ensure your guix.sigs are up-to-date if you wish to `guix-verify` your builds
+against other `guix-attest` signatures.
 
-- Update bitcoin.org version
+```sh
+git -C ./guix.sigs pull
+```
 
-  - Make a pull request to add a file named `YYYY-MM-DD-vX.Y.Z.md` with the release notes
-  to https://github.com/bitcoin/bitcoin.org/tree/master/_releases
-   ([Example for 0.9.2.1](https://raw.githubusercontent.com/bitcoin/bitcoin.org/master/_releases/2014-06-19-v0.9.2.1.md)).
+### Create the macOS SDK tarball (first time, or when SDK version changes)
 
-  - After the pull request is merged, the website will automatically show the newest version, as well
-    as update the OS download links. Ping Saivann in case anything goes wrong
+Create the macOS SDK tarball, see the [macdeploy
+instructions](/contrib/macdeploy/README.md#deterministic-macos-app-notes) for
+details.
+
+### Build and attest to build outputs
+
+Follow the relevant Guix README.md sections:
+- [Building](/contrib/guix/README.md#building)
+- [Attesting to build outputs](/contrib/guix/README.md#attesting-to-build-outputs)
+
+### Verify other builders' signatures to your own (optional)
+
+- [Verifying build output attestations](/contrib/guix/README.md#verifying-build-output-attestations)
+
+### Commit your non codesigned signature to guix.sigs
+
+```sh
+pushd ./guix.sigs
+git add "${VERSION}/${SIGNER}"/noncodesigned.SHA256SUMS{,.asc}
+git commit -m "Add attestations by ${SIGNER} for ${VERSION} non-codesigned"
+popd
+```
+
+Then open a Pull Request to the [guix.sigs repository](https://github.com/bitcoin-core/guix.sigs).
+
+## Codesigning
+
+### macOS codesigner only: Create detached macOS signatures (assuming [signapple](https://github.com/achow101/signapple/) is installed and up to date with master branch)
+
+In the `guix-build-${VERSION}/output/x86_64-apple-darwin` and `guix-build-${VERSION}/output/arm64-apple-darwin` directories:
+
+    tar xf bitcoin-${VERSION}-${ARCH}-apple-darwin-codesigning.tar.gz
+    ./detached-sig-create.sh /path/to/codesign.p12 /path/to/AuthKey_foo.p8 uuid
+    Enter the keychain password and authorize the signature
+    signature-osx.tar.gz will be created
+
+### Windows codesigner only: Create detached Windows signatures
+
+In the `guix-build-${VERSION}/output/x86_64-w64-mingw32` directory:
+
+    tar xf bitcoin-${VERSION}-win64-codesigning.tar.gz
+    ./detached-sig-create.sh /path/to/codesign.key
+    Enter the passphrase for the key when prompted
+    signature-win.tar.gz will be created
+
+### Windows and macOS codesigners only: test code signatures
+It is advised to test that the code signature attaches properly prior to tagging by performing the `guix-codesign` step.
+However if this is done, once the release has been tagged in the bitcoin-detached-sigs repo, the `guix-codesign` step must be performed again in order for the guix attestation to be valid when compared against the attestations of non-codesigner builds. The directories created by `guix-codesign` will need to be cleared prior to running `guix-codesign` again.
+
+### Windows and macOS codesigners only: Commit the detached codesign payloads
+
+```sh
+pushd ./bitcoin-detached-sigs
+# checkout or create the appropriate branch for this release series
+git checkout --orphan <branch>
+# if you are the macOS codesigner
+rm -rf osx
+tar xf signature-osx.tar.gz
+# if you are the windows codesigner
+rm -rf win
+tar xf signature-win.tar.gz
+git add -A
+git commit -m "<version>: {osx,win} signature for {rc,final}"
+git tag -s "v${VERSION}" HEAD
+git push the current branch and new tag
+popd
+```
+
+### Non-codesigners: wait for Windows and macOS detached signatures
+
+- Once the Windows and macOS builds each have 3 matching signatures, they will be signed with their respective release keys.
+- Detached signatures will then be committed to the [bitcoin-detached-sigs](https://github.com/bitcoin-core/bitcoin-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
+
+### Create the codesigned build outputs
+
+- [Codesigning build outputs](/contrib/guix/README.md#codesigning-build-outputs)
+
+### Verify other builders' signatures to your own (optional)
+
+- [Verifying build output attestations](/contrib/guix/README.md#verifying-build-output-attestations)
+
+### Commit your codesigned signature to guix.sigs (for the signed macOS/Windows binaries)
+
+```sh
+pushd ./guix.sigs
+git add "${VERSION}/${SIGNER}"/all.SHA256SUMS{,.asc}
+git commit -m "Add attestations by ${SIGNER} for ${VERSION} codesigned"
+popd
+```
+
+Then open a Pull Request to the [guix.sigs repository](https://github.com/bitcoin-core/guix.sigs).
+
+## After 6 or more people have guix-built and their results match
+
+After verifying signatures, combine the `all.SHA256SUMS.asc` file from all signers into `SHA256SUMS.asc`:
+
+```bash
+cat "$VERSION"/*/all.SHA256SUMS.asc > SHA256SUMS.asc
+```
+
+
+- Upload to the bitcoincore.org server:
+    1. The contents of each `./bitcoin/guix-build-${VERSION}/output/${HOST}/` directory.
+
+       Guix will output all of the results into host subdirectories, but the SHA256SUMS
+       file does not include these subdirectories. In order for downloads via torrent
+       to verify without directory structure modification, all of the uploaded files
+       need to be in the same directory as the SHA256SUMS file.
+
+       Wait until all of these files have finished uploading before uploading the SHA256SUMS(.asc) files.
+
+    2. The `SHA256SUMS` file
+
+    3. The `SHA256SUMS.asc` combined signature file you just created.
+
+- After uploading release candidate binaries, notify the bitcoin-core-dev mailing list and
+  bitcoin-dev group that a release candidate is available for testing. Include a link to the release
+  notes draft.
+
+- The server will automatically create an OpenTimestamps file and torrent of the directory.
+
+- Optionally help seed this torrent. To get the `magnet:` URI use:
+
+  ```sh
+  transmission-show -m <torrent file>
+  ```
+
+  Insert the magnet URI into the announcement sent to mailing lists. This permits
+  people without access to `bitcoincore.org` to download the binary distribution.
+  Also put it into the `optional_magnetlink:` slot in the YAML file for
+  bitcoincore.org.
+
+- Archive the release notes for the new version to `doc/release-notes/release-notes-${VERSION}.md`
+  (branch `master` and branch of the release).
+
+- Update the bitcoincore.org website
+
+  - blog post
+
+  - maintained versions [table](https://github.com/bitcoin-core/bitcoincore.org/commits/master/_includes/posts/maintenance-table.md)
+
+  - RPC documentation update
+
+      - See https://github.com/bitcoin-core/bitcoincore.org/blob/master/contrib/doc-gen/
+
+
+- Update repositories
+
+  - Delete post-EOL [release branches](https://github.com/bitcoin/bitcoin/branches/all) and create a tag `v${branch_name}-final`.
+
+  - Delete ["Needs backport" labels](https://github.com/bitcoin/bitcoin/labels?q=backport) for non-existing branches.
+
+  - Update packaging repo
+
+      - Push the flatpak to flathub, e.g. https://github.com/flathub/org.bitcoincore.bitcoin-qt/pull/2
+
+      - Push the snap, see https://github.com/bitcoin-core/packaging/blob/main/snap/local/build.md
+
+  - Create a [new GitHub release](https://github.com/bitcoin/bitcoin/releases/new) with a link to the archived release notes
 
 - Announce the release:
 
-  - Release sticky on bitcointalk: https://bitcointalk.org/index.php?board=1.0
+  - bitcoin-dev and bitcoin-core-dev mailing list
 
-  - Bitcoin-development mailing list
+  - Bitcoin Core announcements list https://bitcoincore.org/en/list/announcements/join/
 
-  - Update title of #bitcoin on Freenode IRC
+  - Bitcoin Core Twitter https://twitter.com/bitcoincoreorg
 
-  - Optionally reddit /r/Bitcoin, ... but this will usually sort out itself
+  - Celebrate
 
-- Notify BlueMatt so that he can start building [https://launchpad.net/~bitcoin/+archive/ubuntu/bitcoin](the PPAs)
+### Additional information
 
-- Add release notes for the new version to the directory `doc/release-notes` in git master
+#### <a name="how-to-calculate-assumed-blockchain-and-chain-state-size"></a>How to calculate `m_assumed_blockchain_size` and `m_assumed_chain_state_size`
 
-- Celebrate 
+Both variables are used as a guideline for how much space the user needs on their drive in total, not just strictly for the blockchain.
+Note that all values should be taken from a **fully synced** node and have an overhead of 5-10% added on top of its base value.
+
+To calculate `m_assumed_blockchain_size`, take the size in GiB of these directories:
+- For `mainnet` -> the data directory, excluding the `/testnet3`, `/testnet4`, `/signet`, and `/regtest` directories and any overly large files, e.g. a huge `debug.log`
+- For `testnet` -> `/testnet3`
+- For `testnet4` -> `/testnet4`
+- For `signet` -> `/signet`
+
+To calculate `m_assumed_chain_state_size`, take the size in GiB of these directories:
+- For `mainnet` -> `/chainstate`
+- For `testnet` -> `/testnet3/chainstate`
+- For `testnet4` -> `/testnet4/chainstate`
+- For `signet` -> `/signet/chainstate`
+
+Notes:
+- When taking the size for `m_assumed_blockchain_size`, there's no need to exclude the `/chainstate` directory since it's a guideline value and an overhead will be added anyway.
+- The expected overhead for growth may change over time. Consider whether the percentage needs to be changed in response; if so, update it here in this section.

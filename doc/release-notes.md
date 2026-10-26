@@ -1,41 +1,57 @@
-(note: this is a temporary file, to be added-to by anybody, and moved to
-release-notes at release time)
+Bitcoin Core version 28.x is now available from:
 
-Transaction fee changes
-=======================
+  <https://bitcoincore.org/bin/bitcoin-core-28.x/>
 
-This release automatically estimates how high a transaction fee (or how
-high a priority) transactions require to be confirmed quickly. The default
-settings will create transactions that confirm quickly; see the new
-'txconfirmtarget' setting to control the tradeoff between fees and
-confirmation times.
+This release includes various bug fixes and performance
+improvements, as well as updated translations.
 
-Prior releases used hard-coded fees (and priorities), and would
-sometimes create transactions that took a very long time to confirm.
+Please report bugs using the issue tracker at GitHub:
 
+  <https://github.com/bitcoin/bitcoin/issues>
 
-New Command Line Options
-========================
+To receive security and update notifications, please subscribe to:
 
--txconfirmtarget=n : create transactions that have enough fees (or priority)
-so they are likely to confirm within n blocks (default: 1). This setting
-is over-ridden by the -paytxfee option.
+  <https://bitcoincore.org/en/list/announcements/join/>
 
-New RPC methods
+How to Upgrade
+==============
+
+If you are running an older version, shut it down. Wait until it has completely
+shut down (which might take a few minutes in some cases), then run the
+installer (on Windows) or just copy over `/Applications/Bitcoin-Qt` (on macOS)
+or `bitcoind`/`bitcoin-qt` (on Linux).
+
+Upgrading directly from a version of Bitcoin Core that has reached its EOL is
+possible, but it might take some time if the data directory needs to be migrated. Old
+wallet versions of Bitcoin Core are generally supported.
+
+Compatibility
+==============
+
+Bitcoin Core is supported and extensively tested on operating systems
+using the Linux Kernel 3.17+, macOS 11.0+, and Windows 7 and newer. Bitcoin
+Core should also work on most other UNIX-like systems but is not as
+frequently tested on them. It is not recommended to use Bitcoin Core on
+unsupported systems.
+
+Notable changes
 ===============
 
-Fee/Priority estimation
------------------------
+### CI
 
-estimatefee nblocks : Returns approximate fee-per-1,000-bytes needed for
-a transaction to be confirmed within nblocks. Returns -1 if not enough
-transactions have been observed to compute a good estimate.
+- #35202 ci: restore sockets in i686, no IPC job
 
-estimatepriority nblocks : Returns approximate priority needed for
-a zero-fee transaction to confirm within nblocks. Returns -1 if not
-enough free transactions have been observed to compute a good
-estimate.
+### Misc
 
-Statistics used to estimate fees and priorities are saved in the
-data directory in the 'fee_estimates.dat' file just before
-program shutdown, and are read in at startup.
+- #35175 multi_index: fix compilation failure with boost >= 1.91
+
+Credits
+=======
+
+Thanks to everyone who directly contributed to this release:
+
+- Cory Fields
+- Lőrinc
+
+As well as to everyone that helped with translations on
+[Transifex](https://explore.transifex.com/bitcoin/bitcoin/).

@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Coin Control Address Selection</string>
+   <string>Coin Selection</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -24,6 +24,9 @@
      </property>
      <item>
       <layout class="QFormLayout" name="formLayoutCoinControl1">
+       <property name="labelAlignment">
+        <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
        <property name="horizontalSpacing">
         <number>10</number>
        </property>
@@ -139,35 +142,6 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="labelCoinControlPriorityText">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Priority:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="labelCoinControlPriority">
-         <property name="cursor">
-          <cursorShape>IBeamCursor</cursorShape>
-         </property>
-         <property name="contextMenuPolicy">
-          <enum>Qt::ActionsContextMenu</enum>
-         </property>
-         <property name="text">
-          <string notr="true">medium</string>
-         </property>
-         <property name="textInteractionFlags">
-          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
      <item>
@@ -213,45 +187,13 @@
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="labelCoinControlLowOutputText">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Dust:</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="labelCoinControlLowOutput">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="cursor">
-          <cursorShape>IBeamCursor</cursorShape>
-         </property>
-         <property name="contextMenuPolicy">
-          <enum>Qt::ActionsContextMenu</enum>
-         </property>
-         <property name="text">
-          <string notr="true">no</string>
-         </property>
-         <property name="textInteractionFlags">
-          <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
      <item>
       <layout class="QFormLayout" name="formLayoutCoinControl4">
+       <property name="labelAlignment">
+        <set>Qt::AlignLeft|Qt::AlignVCenter</set>
+       </property>
        <property name="horizontalSpacing">
         <number>10</number>
        </property>
@@ -379,9 +321,6 @@
           <property name="text">
            <string>Tree mode</string>
           </property>
-          <property name="checked">
-           <bool>true</bool>
-          </property>
          </widget>
         </item>
         <item>
@@ -394,6 +333,9 @@
           </property>
           <property name="text">
            <string>List mode</string>
+          </property>
+          <property name="checked">
+           <bool>true</bool>
           </property>
          </widget>
         </item>
@@ -431,7 +373,7 @@
       <bool>false</bool>
      </property>
      <property name="columnCount">
-      <number>12</number>
+      <number>6</number>
      </property>
      <attribute name="headerShowSortIndicator" stdset="0">
       <bool>true</bool>
@@ -451,12 +393,12 @@
      </column>
      <column>
       <property name="text">
-       <string notr="true">Label</string>
+       <string>Received with label</string>
       </property>
      </column>
      <column>
       <property name="text">
-       <string>Address</string>
+       <string>Received with address</string>
       </property>
      </column>
      <column>
@@ -470,16 +412,6 @@
       </property>
       <property name="toolTip">
        <string>Confirmed</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string>Priority</string>
-      </property>
-     </column>
-     <column>
-      <property name="text">
-       <string/>
       </property>
      </column>
      <column>
@@ -506,12 +438,6 @@
    </item>
    <item>
     <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -526,7 +452,7 @@
   <customwidget>
    <class>CoinControlTreeWidget</class>
    <extends>QTreeWidget</extends>
-   <header>coincontroltreewidget.h</header>
+   <header>qt/coincontroltreewidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

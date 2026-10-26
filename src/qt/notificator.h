@@ -1,13 +1,11 @@
-// Copyright (c) 2011-2013 The Bitcoin developers
-// Distributed under the MIT/X11 software license, see the accompanying
+// Copyright (c) 2011-2022 The Bitcoin Core developers
+// Distributed under the MIT software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef NOTIFICATOR_H
-#define NOTIFICATOR_H
+#ifndef BITCOIN_QT_NOTIFICATOR_H
+#define BITCOIN_QT_NOTIFICATOR_H
 
-#if defined(HAVE_CONFIG_H)
-#include "config/bitcoin-config.h"
-#endif
+#include <config/bitcoin-config.h> // IWYU pragma: keep
 
 #include <QIcon>
 #include <QObject>
@@ -40,7 +38,7 @@ public:
         Critical        /**< An error occurred */
     };
 
-public slots:
+public Q_SLOTS:
     /** Show notification message.
        @param[in] cls    general message class
        @param[in] title  title shown with message
@@ -57,24 +55,21 @@ private:
     enum Mode {
         None,                       /**< Ignore informational notifications, and show a modal pop-up dialog for Critical notifications. */
         Freedesktop,                /**< Use DBus org.freedesktop.Notifications */
-        QSystemTray,                /**< Use QSystemTray::showMessage */
-        Growl12,                    /**< Use the Growl 1.2 notification system (Mac only) */
-        Growl13,                    /**< Use the Growl 1.3 notification system (Mac only) */
+        QSystemTray,                /**< Use QSystemTrayIcon::showMessage() */
         UserNotificationCenter      /**< Use the 10.8+ User Notification Center (Mac only) */
     };
     QString programName;
-    Mode mode;
+    Mode mode{None};
     QSystemTrayIcon *trayIcon;
 #ifdef USE_DBUS
-    QDBusInterface *interface;
+    QDBusInterface* interface{nullptr};
 
     void notifyDBus(Class cls, const QString &title, const QString &text, const QIcon &icon, int millisTimeout);
 #endif
-    void notifySystray(Class cls, const QString &title, const QString &text, const QIcon &icon, int millisTimeout);
-#ifdef Q_OS_MAC
-    void notifyGrowl(Class cls, const QString &title, const QString &text, const QIcon &icon);
-    void notifyMacUserNotificationCenter(Class cls, const QString &title, const QString &text, const QIcon &icon);
+    void notifySystray(Class cls, const QString &title, const QString &text, int millisTimeout);
+#ifdef Q_OS_MACOS
+    void notifyMacUserNotificationCenter(const QString &title, const QString &text);
 #endif
 };
 
-#endif // NOTIFICATOR_H
+#endif // BITCOIN_QT_NOTIFICATOR_H
